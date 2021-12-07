@@ -1,36 +1,42 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
+    <meta name="author" content="Kahtalı Miçe">
+
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('assets') }}/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/aos.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
     @yield('css')
-    @yield('js')
+    @yield('headerjs')
 </head>
-<body>
 
-    <div class="jumbotron text-center">
-        <h1>Header</h1>
-        <p>Resize this responsive page to see the effect</p>
-        @yield('header')
-    </div>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-    <div class="container">
-        <div class="row">
-            @yield('sidebar')
-            @yield('content')
-        </div>
-    </div>
+    @include('home._header')
+    @include('home._jumbotron')
 
-    <div class="jumbotron text-center">
-        <h1>Footer</h1>
-        <p>footer</p>
-        @yield('footer')
-    </div>
+    @section('content')
+    @show
+
+    @include('home._footer')
+    @yield('footerjs')
 
 </body>
 </html>

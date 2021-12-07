@@ -1,21 +1,17 @@
 @extends('layouts.layout')
 
-@section('title', 'index page')
+@section('title', 'Laravel Araç Kiralama Sitesi')
 
-@section('sidebar')
-    <div class="col-sm-3 col-lg-2">
-        <ul>
-            <li>link 1</li>
-            <li>link 2</li>
-            <li>link 3</li>
-            <li>link 4</li>
-        </ul>
-    </div>
+@section('description')
+    Literally the best website to rent a car...
 @endsection
 
+@section('keywords', 'car, rent, rental, rent a car, rental cars, cars, rental car, car for rental')
+
+@section('featuredcar')
+    @include('home._featuredcar')
+@endsection
 
 @section('content')
-    <div class="col-sm-9 col-lg-10">
-        <p>This is the body content!</p>
-    </div>
+    @include('home._content')
 @endsection
