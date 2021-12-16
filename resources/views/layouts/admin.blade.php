@@ -19,8 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets') }}/css/sb-admin-2.min.css" rel="stylesheet">
-    @yield('css')
-    @yield('js')
+    @yield('styles')
 </head>
 
 <body id="page-top">
@@ -31,7 +30,7 @@
     @include('admin._footer')
 
 
-    @yield('footer')
+    @yield('scripts')
 </body>
 </html>
 
