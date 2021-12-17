@@ -19,9 +19,12 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
+                <h6 class="m-0 font-weight-bold text-primary mb-2">Category List</h6>
                 <div class="categories card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Category List</h6>
+                    <div class="card-header py-3 inline-block">
+                        <a href="{{ route('admin_category_add') }}">
+                            <button class="btn-circle btn btn-success mb-2"><i class="fas fa-plus"></i></button>
+                        </a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -37,6 +40,8 @@
                                     <th>Status</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -47,14 +52,18 @@
                                         <td>{{ $rs->title }}</td>
                                         <td>{{ $rs->keywords }}</td>
                                         <td>{{ $rs->description }}</td>
-                                        <td>{{ $rs->image }}</td>
+                                        <td><img src="{{ $rs->image }}" alt=""></td>
                                         <td>{{ $rs->status }}</td>
                                         <td>{{ $rs->created_at }}</td>
                                         <td>{{ $rs->updated_at }}</td>
+                                        <td><a href="{{ route('admin_category_edit') }}">Edit</a></td>
+                                        <td><a href="{{ route('admin_category_delete', ['id' => $rs->id]) }}"
+                                               onclick="return confirm('Are you sure you want to delete')"
+                                            >Delete</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
-                            </table>
+                                </table>
                         </div>
                     </div>
                 </div>
