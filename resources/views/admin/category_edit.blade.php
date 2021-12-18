@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Add Category')
+@section('title', 'Edit Category')
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets') }}/css/fileupload.css">
@@ -233,33 +233,36 @@
                                 <div class="col-lg-7">
                                     <div class="p-5">
                                         <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">Add a Category</h1>
+                                            <h1 class="h4 text-gray-900 mb-4">Edit Category</h1>
                                         </div>
-                                        <form class="user" action="{{ route('admin_category_create') }}" method="post">
+                                        <form class="user" action="{{ route('admin_category_update', ['id' => $data->id]) }}" method="post">
                                             @csrf
                                             <div class="form-group">
                                                 <select name="parent_id" id="parent_id"
                                                         class="form-control select2 select2-hidden-accessible"
                                                         style="width: 100%;">
-                                                    <option value="0" selected>Main Category</option>
+                                                    <option value="0">Main Category</option>
                                                     @foreach($datalist as $rs)
-                                                        <option value="{{ $rs->id }}">{{ $rs->title }}</option>
+                                                        <option value="{{ $rs->id }}" @if ($rs->id == $data->parent_id) selected @endif>{{ $rs->title }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                     <input type="text" class="form-control form-control-user"
                                                            name="title"
+                                                           value="{{ $data->title }}"
                                                            placeholder="Title">
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control form-control-user"
                                                        name="keywords"
+                                                       value="{{ $data->keywords }}"
                                                        placeholder="Keywords">
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control form-control-user"
                                                        name="description"
+                                                       value="{{ $data->description }}"
                                                        placeholder="Description">
                                             </div>
                                             <div class="form-group">
@@ -267,7 +270,9 @@
                                                     <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
 
                                                     <div class="image-upload-wrap">
-                                                        <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" name="image"/>
+                                                        <input class="file-upload-input" type='file'
+                                                               value="{{ $data->image }}"
+                                                               onchange="readURL(this);" accept="image/*" name="image"/>
                                                         <div class="drag-text">
                                                             <h3>Drag and drop a file or select add Image</h3>
                                                         </div>
@@ -282,13 +287,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <select name="status" id="">
-                                                    <option value="" selected>Status</option>
+                                                    <option value="" selected>{{ $data->status }}</option>
                                                     <option value="True">True</option>
                                                     <option value="False">False</option>
                                                 </select>
                                             </div>
                                             <button type="submit" class="btn btn-primary btn-user btn-block">
-                                                Add Category
+                                                Update Category
                                             </button>
                                     </div>
                                 </div>

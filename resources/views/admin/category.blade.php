@@ -56,7 +56,7 @@
                                         <td>{{ $rs->status }}</td>
                                         <td>{{ $rs->created_at }}</td>
                                         <td>{{ $rs->updated_at }}</td>
-                                        <td><a href="{{ route('admin_category_edit') }}">Edit</a></td>
+                                        <td><a href="{{ route('admin_category_edit', ['id' => $rs->id]) }}">Edit</a></td>
                                         <td><a href="{{ route('admin_category_delete', ['id' => $rs->id]) }}"
                                                onclick="return confirm('Are you sure you want to delete')"
                                             >Delete</a></td>
