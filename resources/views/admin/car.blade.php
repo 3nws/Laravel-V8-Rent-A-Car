@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Category List')
+@section('title', 'Car List')
 
 @section('styles')
     <link href="{{ asset('assets') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -19,10 +19,10 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <h6 class="m-0 font-weight-bold text-primary mb-2">Category List</h6>
+                <h6 class="m-0 font-weight-bold text-primary mb-2">Car List</h6>
                 <div class="categories card shadow mb-4">
                     <div class="card-header py-3 inline-block">
-                        <a href="{{ route('admin_category_add') }}">
+                        <a href="{{ route('admin_car_add') }}">
                             <button class="btn-circle btn btn-success mb-2"><i class="fas fa-plus"></i></button>
                         </a>
                     </div>
@@ -32,11 +32,17 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Parent ID</th>
                                     <th>Title</th>
                                     <th>Keywords</th>
                                     <th>Description</th>
                                     <th>Image</th>
+                                    <th>Category ID</th>
+                                    <th>Price</th>
+                                    <th>Seats</th>
+                                    <th>Large Bags</th>
+                                    <th>Small Bags</th>
+                                    <th>Detail</th>
+                                    <th>User ID</th>
                                     <th>Status</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
@@ -48,16 +54,22 @@
                                 @foreach($datalist as $rs)
                                     <tr>
                                         <td>{{ $rs->id }}</td>
-                                        <td>{{ $rs->parent_id }}</td>
                                         <td>{{ $rs->title }}</td>
                                         <td>{{ $rs->keywords }}</td>
                                         <td>{{ $rs->description }}</td>
                                         <td><img src="{{ $rs->image }}" alt=""></td>
+                                        <td>{{ $rs->category_id }}</td>
+                                        <td>{{ $rs->price }}</td>
+                                        <td>{{ $rs->seats }}</td>
+                                        <td>{{ $rs->large_bags }}</td>
+                                        <td>{{ $rs->small_bags }}</td>
+                                        <td>{{ $rs->detail }}</td>
+                                        <td>{{ $rs->user_id }}</td>
                                         <td>{{ $rs->status }}</td>
                                         <td>{{ $rs->created_at }}</td>
                                         <td>{{ $rs->updated_at }}</td>
-                                        <td><a href="{{ route('admin_category_edit', ['id' => $rs->id]) }}"><i class="fas fa-edit"></i></a></td>
-                                        <td><a href="{{ route('admin_category_delete', ['id' => $rs->id]) }}"
+                                        <td><a href="{{ route('admin_car_edit', ['id' => $rs->id]) }}"><i class="fas fa-edit"></i></a></td>
+                                        <td><a href="{{ route('admin_car_delete', ['id' => $rs->id]) }}"
                                                onclick="return confirm('Are you sure you want to delete')"
                                             ><i class="fas fa-trash-alt"></i></a></td>
                                     </tr>
