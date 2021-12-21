@@ -286,7 +286,8 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <select name="status" id="">
+                                                <select name="status" id=""
+                                                        class="form-control">
                                                     <option value="" selected>{{ $data->status }}</option>
                                                     <option value="True">True</option>
                                                     <option value="False">False</option>
