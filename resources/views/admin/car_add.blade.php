@@ -238,7 +238,7 @@
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Add a Car</h1>
                                         </div>
-                                        <form class="user" action="{{ route('admin_car_store') }}" method="post">
+                                        <form class="user" action="{{ route('admin_car_store') }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
                                                 <select name="category_id" id="category_id"
@@ -303,7 +303,7 @@
                                                        placeholder="Small bags">
                                             </div>
                                             <div class="form-group">
-                                                <textarea id="summernote" name="detail" placeholder="Detail" class="form-control"></textarea>
+                                                <textarea id="summernote" name="detail" class="form-control"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <select name="status" id=""

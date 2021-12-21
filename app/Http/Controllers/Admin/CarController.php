@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -47,7 +48,7 @@ class CarController extends Controller
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
-        $data->image = $request->input('image');
+        $data->image = Storage::putFile('images', $request->file('image')); // file upload
         $data->status = $request->input('status');
         $data->price = $request->input('price');
         $data->seats = $request->input('seats');
@@ -100,7 +101,7 @@ class CarController extends Controller
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
-        $data->image = $request->input('image');
+        $data->image = Storage::putFile('images', $request->file('image')); // file upload
         $data->status = $request->input('status');
         $data->price = $request->input('price');
         $data->seats = $request->input('seats');

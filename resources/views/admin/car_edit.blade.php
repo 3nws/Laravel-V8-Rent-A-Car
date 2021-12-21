@@ -238,7 +238,7 @@
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Edit Car</h1>
                                         </div>
-                                        <form class="user" action="{{ route('admin_car_update', ['id' => $data->id]) }}" method="post">
+                                        <form class="user" action="{{ route('admin_car_update', ['id' => $data->id]) }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
                                                 <select name="category_id" id="category_id"
@@ -279,7 +279,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="file-upload-content">
-                                                        <img class="file-upload-image" src="#" alt="your image" />
+                                                        @if($data->image)
+                                                            <img class="file-upload-image" src="{{ Storage::url($data->image) }}" alt="your image" />
+                                                        @else
+                                                            <img class="file-upload-image" src="#" alt="your image" />
+                                                        @endif
                                                         <div class="image-title-wrap">
                                                             <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
                                                         </div>
@@ -311,7 +315,7 @@
                                                        placeholder="Small bags">
                                             </div>
                                             <div class="form-group">
-                                                <textarea id="summernote" name="detail"placeholder="Detail" class="form-control">
+                                                <textarea id="summernote" name="detail" class="form-control">
                                                     {{ $data->detail }}
                                                 </textarea>
                                             </div>
@@ -345,7 +349,6 @@
 @section('scripts')
             <script src="{{ asset('assets') }}/js/fileupload.js"></script>
             <script src="{{ asset('assets') }}/js/select.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
             <!-- include summernote css/js -->
             <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
