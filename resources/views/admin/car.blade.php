@@ -36,6 +36,7 @@
                                     <th>Keywords</th>
                                     <th>Description</th>
                                     <th>Image</th>
+                                    <th>Image Gallery</th>
                                     <th>Category ID</th>
                                     <th>Price</th>
                                     <th>Seats</th>
@@ -61,6 +62,12 @@
                                             @if($rs->image)
                                                 <img src="{{ Storage::url($rs->image) }}" height="40" alt="">
                                             @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin_image_add', ['car_id' => $rs->id]) }}"
+                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=1400, height=900')">
+                                                <i class="fas fa-images"></i>
+                                            </a>
                                         </td>
                                         <td>{{ $rs->category_id }}</td>
                                         <td>{{ $rs->price }}</td>
