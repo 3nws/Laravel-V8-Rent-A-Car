@@ -48,7 +48,9 @@ class CarController extends Controller
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
-        $data->image = Storage::putFile('images', $request->file('image')); // file upload
+        if ($request->file('image')){
+            $data->image = Storage::putFile('images', $request->file('image')); // file upload
+        }
         $data->status = $request->input('status');
         $data->price = $request->input('price');
         $data->seats = $request->input('seats');
@@ -101,7 +103,9 @@ class CarController extends Controller
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
-        $data->image = Storage::putFile('images', $request->file('image')); // file upload
+        if ($request->file('image')){
+            $data->image = Storage::putFile('images', $request->file('image')); // file upload
+        }
         $data->status = $request->input('status');
         $data->price = $request->input('price');
         $data->seats = $request->input('seats');
