@@ -271,14 +271,14 @@
                                                 <div class="file-upload">
                                                     <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
 
-                                                    <div class="image-upload-wrap">
+                                                    <div class="image-upload-wrap" style="display: none;">
                                                         <input class="file-upload-input" type='file'
                                                                value="{{ $data->image }}" onchange="readURL(this);" accept="image/*" name="image"/>
                                                         <div class="drag-text">
                                                             <h3>Drag and drop a file or select add Image</h3>
                                                         </div>
                                                     </div>
-                                                    <div class="file-upload-content">
+                                                    <div class="file-upload-content" style="display: block;">
                                                         @if($data->image)
                                                             <img class="file-upload-image" src="{{ Storage::url($data->image) }}" alt="your image" />
                                                         @else
