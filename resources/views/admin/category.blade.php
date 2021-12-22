@@ -52,7 +52,11 @@
                                         <td>{{ $rs->title }}</td>
                                         <td>{{ $rs->keywords }}</td>
                                         <td>{{ $rs->description }}</td>
-                                        <td><img src="{{ $rs->image }}" alt=""></td>
+                                        <td>
+                                            @if($rs->image)
+                                                <img src="{{ Storage::url($rs->image) }}" height="40" alt="">
+                                            @endif
+                                        </td>
                                         <td>{{ $rs->status }}</td>
                                         <td>{{ $rs->created_at }}</td>
                                         <td>{{ $rs->updated_at }}</td>

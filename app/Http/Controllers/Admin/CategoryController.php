@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -36,26 +37,19 @@ class CategoryController extends Controller
      *
      */
     public function create(Request $request){
-        DB::table('categories')->insert([
-            'parent_id' => $request->input('parent_id'),
-            'title' => $request->input('title'),
-            'keywords' => $request->input('keywords'),
-            'description' => $request->input('description'),
-            'image' => $request->input('image'),
-            'status' => $request->input('status'),
-        ]);
+        $data = new Category;
+        $data->parent_id = $request->input('parent_id');
+        $data->title = $request->input('title');
+        $data->keywords = $request->input('keywords');
+        $data->description = $request->input('description');
+        if ($request->file('image')){
+            $data->image = Storage::putFile('images', $request->file('image')); // file upload
+        }
+        $data->status = $request->input('status');
+        $data->save();
 
         return redirect()->route('admin_category');
 
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -96,7 +90,9 @@ class CategoryController extends Controller
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
-        $data->image = $request->input('image');
+        if ($request->file('image')){
+            $data->image = Storage::putFile('images', $request->file('image')); // file upload
+        }
         $data->status = $request->input('status');
         $data->save();
 
