@@ -33,7 +33,7 @@
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Add a Category</h1>
                                         </div>
-                                        <form class="user" action="{{ route('admin_category_create') }}" method="post">
+                                        <form class="user" action="{{ route('admin_category_create') }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
                                                 <select name="parent_id" id="parent_id"
