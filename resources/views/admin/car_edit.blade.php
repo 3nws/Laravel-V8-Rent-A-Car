@@ -330,6 +330,7 @@
                                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                                 Edit Car
                                             </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

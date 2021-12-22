@@ -296,6 +296,7 @@
                                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                                 Update Category
                                             </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

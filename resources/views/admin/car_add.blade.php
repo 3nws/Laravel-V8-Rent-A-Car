@@ -316,6 +316,7 @@
                                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                                 Add Car
                                             </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
