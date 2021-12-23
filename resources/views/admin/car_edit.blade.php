@@ -113,7 +113,7 @@
                                                        placeholder="Small bags">
                                             </div>
                                             <div class="form-group">
-                                                <textarea id="summernote" name="detail" class="form-control">
+                                                <textarea id="detail" name="detail" class="form-control">
                                                     {{ $data->detail }}
                                                 </textarea>
                                             </div>
@@ -153,7 +153,7 @@
             <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
             <script>
                 $(document).ready(function() {
-                    $('#summernote').summernote();
+                    $('#detail').summernote();
                 });
             </script>
 @endsection
