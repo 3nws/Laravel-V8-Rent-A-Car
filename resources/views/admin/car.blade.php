@@ -37,7 +37,7 @@
                                     <th>Description</th>
                                     <th>Image</th>
                                     <th>Image Gallery</th>
-                                    <th>Category ID</th>
+                                    <th>Category</th>
                                     <th>Price</th>
                                     <th>Seats</th>
                                     <th>Large Bags</th>
@@ -69,7 +69,9 @@
                                                 <i class="fas fa-images"></i>
                                             </a>
                                         </td>
-                                        <td>{{ $rs->category->title }}</td>
+                                        <td>
+                                            {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title) }}
+                                        </td>
                                         <td>{{ $rs->price }}</td>
                                         <td>{{ $rs->seats }}</td>
                                         <td>{{ $rs->large_bags }}</td>

@@ -10,6 +10,22 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
+
+    protected $appends = [
+        'getParentsTree',
+    ];
+
+    public static function getParentsTree($category, $title){
+        // gets all the subsequent categories up the hierarchy by calling it recursively
+        if ($category->parent_id==0){
+            return $title;
+        }
+        $parent = Category::find($category->parent_id);
+        $title = $parent->title . ' > ' . $title;
+
+        return CategoryController::getParentsTree($parent, $title);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +34,7 @@ class CategoryController extends Controller
     {
 //        $datalist = DB::select('SELECT * FROM categories');
         // equals to $datalist = DB::table('categories')->get();
-        $datalist = Category::all();
+        $datalist = Category::with('children')->get();
 
         return view('admin.category', ['datalist' => $datalist]);
     }
@@ -29,7 +45,7 @@ class CategoryController extends Controller
      */
     public function add()
     {
-        $datalist = DB::table('categories')->get();
+        $datalist = Category::with('children')->get();
         return view('admin.category_add', ['datalist' => $datalist]);
     }
 
@@ -73,7 +89,7 @@ class CategoryController extends Controller
     public function edit(Category $category, $id)
     {
         $data = Category::find($id);
-        $datalist = DB::table('categories')->get();
+        $datalist = Category::with('children')->get();
         return view('admin.category_edit', ['data' => $data, 'datalist' => $datalist]);
     }
 

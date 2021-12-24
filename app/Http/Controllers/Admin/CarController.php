@@ -31,7 +31,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        $datalist = Category::all();
+        $datalist = Category::with('children')->get();
         return view('admin.car_add', ['datalist' => $datalist]);
     }
 
@@ -84,7 +84,7 @@ class CarController extends Controller
     public function edit(Car $car, $id)
     {
         $data = Car::find($id);
-        $datalist = Category::all();
+        $datalist = Category::with('children')->get();
         return view('admin.car_edit', ['data' => $data, 'datalist' => $datalist]);
     }
 
