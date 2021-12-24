@@ -69,7 +69,7 @@
                                                 <i class="fas fa-images"></i>
                                             </a>
                                         </td>
-                                        <td>{{ $rs->category_id }}</td>
+                                        <td>{{ $rs->category->title }}</td>
                                         <td>{{ $rs->price }}</td>
                                         <td>{{ $rs->seats }}</td>
                                         <td>{{ $rs->large_bags }}</td>

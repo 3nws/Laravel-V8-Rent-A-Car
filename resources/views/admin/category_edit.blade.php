@@ -89,7 +89,7 @@
                                             <div class="form-group">
                                                 <select name="status" id=""
                                                         class="form-control">
-                                                    <option value="" selected>{{ $data->status }}</option>
+                                                    <option value="{{ $data->status }}" selected>{{ $data->status }}</option>
                                                     <option value="True">True</option>
                                                     <option value="False">False</option>
                                                 </select>
