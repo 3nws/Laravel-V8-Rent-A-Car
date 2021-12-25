@@ -16,13 +16,11 @@ use App\Http\Controllers\HomeController;
 
 Route::redirect('/homepage', 'home')->name('homepage');
 
-Route::get('/', function (){
-    return view('home.index');
-});
-
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/references', [HomeController::class, 'references'])->name('references');
 
 
 // Admin routes

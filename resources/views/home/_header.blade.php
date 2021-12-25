@@ -5,7 +5,7 @@
 
             <div class="col-3 ">
                 <div class="site-logo">
-                    <a href="index.html">CarRent</a>
+                    <a href="{{ route('home') }}">CarRent</a>
                 </div>
             </div>
 
@@ -18,14 +18,24 @@
 
                 <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                     <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                        <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="@if(request()->routeIS('home')) active @endif"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
                         <li>
                             @include('home._category')
                         </li>
-                        <li><a href="cars.html" class="nav-link">Cars</a></li>
-                        <li><a href="about.html" class="nav-link">About</a></li>
-                        <li><a href="blog.html" class="nav-link">Blog</a></li>
-                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li class="will be added later maybe"><a href="#" class="nav-link">Cars</a></li>
+                        <li class="@if(request()->routeIS('aboutus')) active @endif"><a href="{{ route('aboutus') }}" class="nav-link">About Us</a></li>
+                        <li class="@if(request()->routeIS('contact')) active @endif"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
+                        <li class="@if(request()->routeIS('faq')) active @endif"><a href="{{ route('faq') }}" class="nav-link">FAQ</a></li>
+                        <li class="@if(request()->routeIS('references')) active @endif"><a href="{{ route('references') }}" class="nav-link">References</a></li>
+                        @auth
+{{--                            will add user info later--}}
+
+                            <li><a href="{{ route('admin_logout') }}" class="nav-link">Logout</a></li>
+                        @endauth
+                        @guest
+                            <li><a href="{{ route('admin_login') }}" class="nav-link">Login</a></li>
+                            <li><a href="{{ route('register') }}" class="nav-link">Register</a></li>
+                        @endguest
                     </ul>
                 </nav>
             </div>

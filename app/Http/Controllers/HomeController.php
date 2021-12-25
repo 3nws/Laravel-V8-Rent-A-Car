@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,14 +15,35 @@ class HomeController extends Controller
         return Category::where('parent_id', '=', 0)->with('children')->get();
     }
 
+    public static function getSettings(){
+        return Setting::first();
+    }
+
     public function index()
     {
-        return view('home.index');
+        $setting = Setting::first();
+        // same thing with return view('home.index', ['setting' => $setting]);
+        return view('home.index')->with('setting',$setting);
     }
 
     public function aboutus()
     {
-        return view('home.aboutus');
+        return view('home.about');
+    }
+
+    public function contact()
+    {
+        return view('home.contact');
+    }
+
+    public function references()
+    {
+        return view('home.references');
+    }
+
+    public function faq()
+    {
+        return view('home.faq');
     }
 
     public function login(){
@@ -47,7 +69,12 @@ class HomeController extends Controller
     }
 
     public function logout(){
-        return view('admin.login');
+        Auth::logout();
+//        $request->session()->invalidate();
+//
+//        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
 }

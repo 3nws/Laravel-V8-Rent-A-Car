@@ -11,7 +11,7 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         @foreach($parentCategories as $rs)
-            <a class="dropdown-item" href="#">o{{ $rs->title }}</a>
+            <a class="dropdown-item" href="#">{{ $rs->title }}</a>
 {{--            <div class="dropdown-menu">--}}
 {{--                @if(count($rs->children))--}}
 {{--                    @include('home.categoryTree', ['children' => $rs->children])--}}

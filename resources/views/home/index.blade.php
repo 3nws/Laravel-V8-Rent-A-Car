@@ -1,12 +1,12 @@
 @extends('layouts.layout')
 
-@section('title', 'Laravel Araç Kiralama Sitesi')
+@section('title', $setting->title)
 
 @section('description')
-    Literally the best website to rent a car...
+    {{ $setting->description }}
 @endsection
 
-@section('keywords', 'car, rent, rental, rent a car, rental cars, cars, rental car, car for rental')
+@section('keywords', $setting->keywords)
 
 @section('featuredcar')
     @include('home._featuredcar')
