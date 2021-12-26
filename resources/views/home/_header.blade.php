@@ -28,8 +28,7 @@
                         <li class="@if(request()->routeIS('faq')) active @endif"><a href="{{ route('faq') }}" class="nav-link">FAQ</a></li>
                         <li class="@if(request()->routeIS('references')) active @endif"><a href="{{ route('references') }}" class="nav-link">References</a></li>
                         @auth
-{{--                            will add user info later--}}
-
+                            <li><a href="{{ route('myprofile') }}" class="nav-link">{{ Auth::user()->name }}</a></li>
                             <li><a href="{{ route('admin_logout') }}" class="nav-link">Logout</a></li>
                         @endauth
                         @guest

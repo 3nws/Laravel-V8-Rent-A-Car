@@ -68,6 +68,14 @@ Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login'
 Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin_logincheck');
 Route::get('/admin/logout', [HomeController::class, 'logout'])->name('admin_logout');
 
+// User
+
+Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
+
+    Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('myprofile');
+
+});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
