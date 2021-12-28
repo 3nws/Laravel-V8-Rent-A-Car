@@ -39,6 +39,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'address' => $input['address'],
             ])->save();
         }
+
+        // updated livewire profile.show redirect to userprofile
     }
 
     /**
