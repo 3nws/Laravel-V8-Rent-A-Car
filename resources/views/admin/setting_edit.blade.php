@@ -136,20 +136,17 @@
                                             </div>
                                             <div class="form-group">
                                                 <textarea id="aboutus" name="aboutus" class="form-control">
-                                                    About us:
                                                     {{ $data->aboutus }}
                                                 </textarea>
                                             </div>
                                             <div class="form-group">
                                                 <textarea id="contact" name="contact" class="form-control">
-                                                    Contact:
                                                     {{ $data->contact }}
                                                 </textarea>
                                             </div>
                                             <div class="form-group">
-                                                <textarea id="reference" name="reference" class="form-control">
-                                                    References:
-                                                    {{ $data->reference }}
+                                                <textarea id="references" name="references" class="form-control">
+                                                    {{ $data->references }}
                                                 </textarea>
                                             </div>
                                             <div class="form-group">
@@ -190,7 +187,7 @@
                 $(document).ready(function() {
                     $('#aboutus').summernote();
                     $('#contact').summernote();
-                    $('#reference').summernote();
+                    $('#references').summernote();
                 });
             </script>
 @endsection

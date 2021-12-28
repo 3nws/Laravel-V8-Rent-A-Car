@@ -31,7 +31,7 @@
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
     @include('home._header')
-    @include('home._jumbotron')
+    @yield('jumbo')
 
     @section('content')
     @show

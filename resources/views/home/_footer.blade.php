@@ -6,8 +6,6 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <h2 class="footer-heading mb-4">About Us</h2>
-                <p>{{ $setting->aboutus }}</p>
                 <h2 class="footer-heading mb-4">Contact</h2>
                 <p><i class="fas fa-phone mr-1"></i>{{ $setting->phone }}</p>
                 <p><i class="fas fa-fax mr-1"></i>{{ $setting->fax }}</p>
