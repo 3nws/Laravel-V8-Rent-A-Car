@@ -28,11 +28,11 @@
                         <li class="@if(request()->routeIS('faq')) active @endif"><a href="{{ route('faq') }}" class="nav-link">FAQ</a></li>
                         <li class="@if(request()->routeIS('references')) active @endif"><a href="{{ route('references') }}" class="nav-link">References</a></li>
                         @auth
-                            <li><a href="{{ route('myprofile') }}" class="nav-link">{{ Auth::user()->name }}</a></li>
-                            <li><a href="{{ route('admin_logout') }}" class="nav-link">Logout</a></li>
+                            <li><a href="{{ route('userprofile') }}" class="nav-link">{{ Auth::user()->name }}</a></li>
+                            <li><a href="{{ route('logout') }}" class="nav-link">Logout</a></li>
                         @endauth
                         @guest
-                            <li><a href="{{ route('admin_login') }}" class="nav-link">Login</a></li>
+                            <li><a href="{{ route('login') }}" class="nav-link">Login</a></li>
                             <li><a href="{{ route('register') }}" class="nav-link">Register</a></li>
                         @endguest
                     </ul>
