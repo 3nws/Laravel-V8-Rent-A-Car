@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Car List')
+@section('title', 'Contact Messages List')
 
 @section('styles')
     <link href="{{ asset('assets') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -19,13 +19,10 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <h6 class="m-0 font-weight-bold text-primary mb-2">Car List</h6>
+                <h6 class="m-0 font-weight-bold text-primary mb-2">Contact Messages List</h6>
                 <div class="categories card shadow mb-4">
                     <div class="card-header py-3 inline-block">
                         @include('home.message')
-                        <a href="{{ route('admin_car_add') }}">
-                            <button class="btn-circle btn btn-success mb-2"><i class="fas fa-plus"></i></button>
-                        </a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -33,12 +30,12 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Image</th>
-                                    <th>Image Gallery</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>User ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th>Note</th>
                                     <th>Status</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
@@ -50,28 +47,18 @@
                                 @foreach($datalist as $rs)
                                     <tr>
                                         <td>{{ $rs->id }}</td>
-                                        <td>{{ $rs->title }}</td>
-                                        <td>
-                                            @if($rs->image)
-                                                <img src="{{ Storage::url($rs->image) }}" height="40" alt="">
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin_image_add', ['car_id' => $rs->id]) }}"
-                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=1400, height=900')">
-                                                <i class="fas fa-images"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title) }}
-                                        </td>
-                                        <td>{{ $rs->price }}</td>
-                                        <td>{{ $rs->user_id }}</td>
+                                        <td>{{ $rs->name }}</td>
+                                        <td>{{ $rs->email }}</td>
+                                        <td>{{ $rs->phone }}</td>
+                                        <td>{{ $rs->subject }}</td>
+                                        <td>{{ $rs->message }}</td>
+                                        <td>{{ $rs->note }}</td>
                                         <td>{{ $rs->status }}</td>
                                         <td>{{ $rs->created_at }}</td>
                                         <td>{{ $rs->updated_at }}</td>
-                                        <td><a href="{{ route('admin_car_edit', ['id' => $rs->id]) }}"><i class="fas fa-edit"></i></a></td>
-                                        <td><a href="{{ route('admin_car_delete', ['id' => $rs->id]) }}"
+                                        <td><a href="{{ route('admin_message_edit', ['id' => $rs->id]) }}"
+                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=1400, height=900')"><i class="fas fa-edit"></i></a></td>
+                                        <td><a href="{{ route('admin_message_delete', ['id' => $rs->id]) }}"
                                                onclick="return confirm('Are you sure you want to delete')"
                                             ><i class="fas fa-trash-alt"></i></a></td>
                                     </tr>

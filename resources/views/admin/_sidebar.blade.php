@@ -32,7 +32,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin_car') }}">
-                <i class="fas fa-fw fa-cog"></i>
+                <i class="fas fa-fw fa-car"></i>
                 <span>Cars</span>
             </a>
         </li>
@@ -40,6 +40,12 @@
             <a class="nav-link" href="{{ route('admin_setting') }}">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Settings</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin_message') }}">
+                <i class="fas fa-fw fa-envelope-square"></i>
+                <span>Contact Messages</span>
             </a>
         </li>
 

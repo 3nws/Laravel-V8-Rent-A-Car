@@ -22,6 +22,7 @@
                 <h6 class="m-0 font-weight-bold text-primary mb-2">Category List</h6>
                 <div class="categories card shadow mb-4">
                     <div class="card-header py-3 inline-block">
+                        @include('home.message')
                         <a href="{{ route('admin_category_add') }}">
                             <button class="btn-circle btn btn-success mb-2"><i class="fas fa-plus"></i></button>
                         </a>

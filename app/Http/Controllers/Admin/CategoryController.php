@@ -65,7 +65,7 @@ class CategoryController extends Controller
         $data->status = $request->input('status');
         $data->save();
 
-        return redirect()->route('admin_category');
+        return redirect()->route('admin_category')->with('success', 'Category created.');
 
     }
 
@@ -113,7 +113,7 @@ class CategoryController extends Controller
         $data->status = $request->input('status');
         $data->save();
 
-        return redirect()->route('admin_category');
+        return redirect()->route('admin_category')->with('success', 'Category updated.');
     }
 
     /**
@@ -126,6 +126,6 @@ class CategoryController extends Controller
     {
         DB::table('categories')->where('id', '=', $id)->delete();
 
-        return redirect()->route('admin_category');
+        return redirect()->route('admin_category')->with('success', 'Category deleted.');
     }
 }

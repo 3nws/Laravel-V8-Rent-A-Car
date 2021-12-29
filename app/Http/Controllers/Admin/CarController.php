@@ -60,7 +60,7 @@ class CarController extends Controller
         $data->user_id = Auth::id();
         $data->save();
 
-        return redirect()->route('admin_car');
+        return redirect()->route('admin_car')->with('success', 'Car created.');
     }
 
     /**
@@ -115,7 +115,7 @@ class CarController extends Controller
         $data->user_id = Auth::id();
         $data->save();
 
-        return redirect()->route('admin_car');
+        return redirect()->route('admin_car')->with('success', 'Car updated.');
     }
 
     /**
@@ -129,6 +129,6 @@ class CarController extends Controller
         $data = Car::find($id);
         $data->delete();
 
-        return redirect()->route('admin_car');
+        return redirect()->route('admin_car')->with('success', 'Car deleted.');
     }
 }
