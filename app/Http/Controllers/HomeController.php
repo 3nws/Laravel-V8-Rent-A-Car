@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Car;
 use App\Models\Category;
 use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use MongoDB\Driver\Session;
 
 class HomeController extends Controller
 {
@@ -24,8 +24,17 @@ class HomeController extends Controller
     public function index()
     {
         $setting = Setting::first();
-        // same thing with return view('home.index', ['setting' => $setting]);
-        return view('home.index')->with('setting',$setting);
+
+        $slider = Car::select('id', 'title', 'image', 'price', 'seats', 'large_bags', 'small_bags')->limit(3)->get();
+
+        $data = [
+            'setting' => $setting,
+            'slider' => $slider,
+            'page' => 'home',
+        ];
+
+        // same thing with return view('home.index', );
+        return view('home.index', $data);
     }
 
     public function aboutus()

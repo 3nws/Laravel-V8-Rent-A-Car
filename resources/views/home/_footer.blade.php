@@ -66,4 +66,11 @@
 <script src="{{ asset('assets') }}/js/aos.js"></script>
 
 <script src="{{ asset('assets') }}/js/main.js"></script>
+<script>
+    $(document).ready(function() {
+        const owlNav = document.querySelector('.owl-nav');
+        owlNav.parentElement.removeChild(owlNav);
+    });
+</script>
+
 

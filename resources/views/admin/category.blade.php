@@ -35,8 +35,6 @@
                                     <th>ID</th>
                                     <th>Parent</th>
                                     <th>Title</th>
-                                    <th>Keywords</th>
-                                    <th>Description</th>
                                     <th>Image</th>
                                     <th>Status</th>
                                     <th>Created At</th>
@@ -53,8 +51,6 @@
                                             {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title) }}
                                         </td>
                                         <td>{{ $rs->title }}</td>
-                                        <td>{{ $rs->keywords }}</td>
-                                        <td>{{ $rs->description }}</td>
                                         <td>
                                             @if($rs->image)
                                                 <img src="{{ Storage::url($rs->image) }}" height="40" alt="">

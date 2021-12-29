@@ -48,7 +48,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('edit/{id}', [App\Http\Controllers\Admin\CarController::class, 'edit'])->name('admin_car_edit');
         Route::post('update/{id}', [App\Http\Controllers\Admin\CarController::class, 'update'])->name('admin_car_update');
         Route::get('delete/{id}', [App\Http\Controllers\Admin\CarController::class, 'destroy'])->name('admin_car_delete');
-        Route::get('show', [App\Http\Controllers\Admin\CarController::class, 'show'])->name('admin_car_show');
+        Route::get('show/{id}', [App\Http\Controllers\Admin\CarController::class, 'show'])->name('admin_car_show');
     });
 
     // Car Image Gallery
