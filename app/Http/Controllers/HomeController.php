@@ -9,6 +9,7 @@ use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,10 +28,16 @@ class HomeController extends Controller
 
         $slider = Car::select('id', 'title', 'image', 'price', 'seats', 'large_bags', 'small_bags')->limit(3)->get();
 
+        $featured = DB::table('cars')->inRandomOrder()->first();
+
+        $cars = Car::limit(4)->get();
+
         $data = [
             'setting' => $setting,
             'slider' => $slider,
             'page' => 'home',
+            'featured' => $featured,
+            'cars' => $cars,
         ];
 
         // same thing with return view('home.index', );

@@ -9,10 +9,34 @@
 @section('keywords', $setting->keywords)
 
 <div class="ftco-blocks-cover-1">
-    <div class="ftco-cover-1 overlay" style="background-image: url('{{ asset('assets') }}/images/hero_1.jpg')">
+    <div class="ftco-cover-1 overlay" style="background-image: url({{ Storage::url($featured->image) }});">
         <div class="container">
             <div class="row align-items-center">
-                @include('home._featuredcar')
+                <div class="col-lg-5">
+                    <div class="feature-car-rent-box-1">
+                        <h3>{{ $featured->title }}</h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                <span>Seats</span>
+                                <span class="spec">{{ $featured->seats }}</span>
+                            </li>
+                            <li>
+                                <span>Large Bags</span>
+                                <span class="spec">{{ $featured->large_bags }}</span>
+                            </li>
+                            <li>
+                                <span>Small Bags</span>
+                                <span class="spec">{{ $featured->small_bags }}</span>
+                            </li>
+                            <li>
+                        </ul>
+                        <div class="d-flex align-items-center bg-light p-3">
+                            <span>${{ $featured->price }}/day</span>
+                            <a href="{{ route('contact') }}" class="ml-auto btn btn-primary">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
