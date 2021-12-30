@@ -43,6 +43,13 @@ class HomeController extends Controller
         return view('home.about')->with('setting',$setting);
     }
 
+    public function category_cars($id)
+    {
+        $data = Car::where('category_id', $id)->get();
+        $category = Category::find($id);
+        return view('home.category_cars', ['data' => $data, 'category' => $category]);
+    }
+
     public function contact()
     {
         $setting = Setting::first();

@@ -19,6 +19,7 @@ Route::redirect('/homepage', 'home')->name('homepage');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/category_cars/{id}', [HomeController::class, 'category_cars'])->name('category_cars');
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
