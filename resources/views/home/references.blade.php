@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-6 text-center">
-                    <h1>Our References</h1>
+                    <h1>OUR REFERENCES</h1>
                 </div>
             </div>
         </div>

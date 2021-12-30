@@ -10,6 +10,15 @@ html {
     position: relative;
 }
 
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+
 .dropdown-submenu>a:after {
     content: "\f0da";
     float: right;

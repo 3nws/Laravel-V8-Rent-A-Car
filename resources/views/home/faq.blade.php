@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-6 text-center">
-                    <h1>Frequently Asked Questions</h1>
+                    <h1>FREQUENTLY ASKED QUESTIONS</h1>
                 </div>
             </div>
         </div>

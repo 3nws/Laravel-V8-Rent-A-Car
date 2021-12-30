@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-6 text-center">
-                    <h1>Category</h1>
+                    <h1>{{ strtoupper($category->title) }} CARS</h1>
                 </div>
             </div>
         </div>
