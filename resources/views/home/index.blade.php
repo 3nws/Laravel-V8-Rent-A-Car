@@ -14,7 +14,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="feature-car-rent-box-1">
-                        <h3>{{ $featured->title }}</h3>
+                        <h3><a href="{{ route('car_detail', ['id' => $featured->id]) }}">{{ $featured->title }}</a></h3>
                         <ul class="list-unstyled">
                             <li>
                                 <span>Seats</span>
