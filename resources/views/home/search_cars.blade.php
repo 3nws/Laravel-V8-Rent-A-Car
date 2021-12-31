@@ -1,19 +1,32 @@
-<div class="site-section bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <h3>Our Offer</h3>
-                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure nesciunt nemo vel earum maxime neque!</p>
-                <p>
-                    <a href="#" class="btn btn-primary custom-prev">Previous</a>
-                    <span class="mx-2">/</span>
-                    <a href="#" class="btn btn-primary custom-next">Next</a>
-                </p>
-            </div>
-            <div class="col-lg-9">
-                <div class="nonloop-block-13 owl-carousel">
+@extends('layouts.layout')
 
-                    @foreach($slider as $rs)
+@section('title', $search . ' Car List')
+
+@section('description')
+@endsection
+
+@section('keywords')
+@endsection
+
+<div class="ftco-blocks-cover-1">
+    <div class="ftco-cover-1 overlay innerpage" style="background-image: url('{{ asset('assets') }}/images/hero_2.jpg')">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h1>{{ strtoupper($search) }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section('content')
+
+    <div class="site-section bg-light">
+        <div class="container">
+            <div class="row">
+                @foreach($datalist as $rs)
+                <div class="col-lg-4 col-md-6 mb-4">
                     <div class="item-1">
                         <a href="#"><img src="{{ Storage::url($rs->image) }}" style="height: 175px;" alt="Image" class="img-fluid"></a>
                         <div class="item-1-contents">
@@ -47,10 +60,10 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
-</div>
 
+@endsection

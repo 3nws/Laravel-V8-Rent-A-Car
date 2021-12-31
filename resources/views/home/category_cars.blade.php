@@ -28,10 +28,10 @@
                 @foreach($data as $rs)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="item-1">
-                        <a href="#"><img src="{{ Storage::url($rs->image) }}" style="height: 250px;" alt="Image" class="img-fluid"></a>
+                        <a href="{{ route('car_detail', ['id' => $rs->id]) }}"><img src="{{ Storage::url($rs->image) }}" style="height: 175px;" alt="Image" class="img-fluid"></a>
                         <div class="item-1-contents">
                             <div class="text-center">
-                                <h3><a href="#">{{ $rs->title }}</a></h3>
+                                <h3><a href="{{ route('car_detail', ['id' => $rs->id]) }}">{{ $rs->title }}</a></h3>
                                 <div class="rating">
                                     <span class="icon-star text-warning"></span>
                                     <span class="icon-star text-warning"></span>

@@ -22,6 +22,8 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/car/{id}', [HomeController::class, 'car'])->name('car_detail');
 Route::get('/category_cars/{id}', [HomeController::class, 'category_cars'])->name('category_cars');
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
+Route::post('/get_car', [HomeController::class, 'get_car'])->name('get_car');
+Route::get('/car_list/{search}', [HomeController::class, 'car_list'])->name('car_list');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
 

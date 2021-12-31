@@ -34,7 +34,6 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Subject</th>
-                                    <th>Message</th>
                                     <th>Note</th>
                                     <th>Status</th>
                                     <th>Created At</th>
@@ -51,7 +50,6 @@
                                         <td>{{ $rs->email }}</td>
                                         <td>{{ $rs->phone }}</td>
                                         <td>{{ $rs->subject }}</td>
-                                        <td>{{ $rs->message }}</td>
                                         <td>{{ $rs->note }}</td>
                                         <td>{{ $rs->status }}</td>
                                         <td>{{ $rs->created_at }}</td>
