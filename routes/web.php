@@ -76,6 +76,14 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('show', [App\Http\Controllers\Admin\MessageController::class, 'show'])->name('admin_message_show');
     });
 
+    // Comment
+    Route::prefix('comment')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\CommentController::class, 'index'])->name('admin_comment');
+        Route::get('delete/{id}', [App\Http\Controllers\Admin\CommentController::class, 'destroy'])->name('admin_comment_delete');
+        Route::get('show/{id}', [App\Http\Controllers\Admin\CommentController::class, 'show'])->name('admin_comment_show');
+        Route::post('update/{id}', [App\Http\Controllers\Admin\CommentController::class, 'update'])->name('admin_comment_update');
+    });
+
 
 });
 
@@ -89,6 +97,8 @@ Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
 
     Route::get('/profile', [App\Http\Controllers\UserController::class, 'index'])->name('userprofile');
+    Route::get('/comments', [App\Http\Controllers\UserController::class, 'my_comments'])->name('usercomments');
+    Route::get('/delete_comment/{id}', [App\Http\Controllers\UserController::class, 'destroy_comment'])->name('userdestroycomment');
 
 });
 

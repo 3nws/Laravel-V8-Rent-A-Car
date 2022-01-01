@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -20,6 +21,10 @@ class HomeController extends Controller
 
     public static function getSettings(){
         return Setting::first();
+    }
+
+    public static function avgrate($id){
+        return Comment::where('car_id', $id)->average('rate');
     }
 
     public function index()
@@ -54,7 +59,8 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
         $data = Car::find($id);
-        return view('home.car_detail', ['data' => $data, 'setting' => $setting]);
+        $comments = Comment::where('car_id', $id)->get();
+        return view('home.car_detail', ['data' => $data, 'setting' => $setting, 'comments' => $comments]);
     }
 
     public function get_car(Request $request)

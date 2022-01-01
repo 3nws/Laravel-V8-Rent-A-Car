@@ -20,11 +20,10 @@
                             <div class="text-center">
                                 <h3><a href="{{ route('car_detail', ['id' => $rs->id]) }}">{{ $rs->title }}</a></h3>
                                 <div class="rating">
-                                    <span class="icon-star text-warning"></span>
-                                    <span class="icon-star text-warning"></span>
-                                    <span class="icon-star text-warning"></span>
-                                    <span class="icon-star text-warning"></span>
-                                    <span class="icon-star text-warning"></span>
+                                    @php
+                                        $avgrate = (int)\App\Http\Controllers\HomeController::avgrate($rs->id);
+                                    @endphp
+                                    <p class="starability-result" style="margin-left: auto; margin-right: auto" data-rating="{{ $avgrate }}"></p>
                                 </div>
                                 <div class="rent-price"><span>${{ $rs->price }}/</span>day</div>
                             </div>

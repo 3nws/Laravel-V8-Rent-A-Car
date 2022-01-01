@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/aos.css">
 
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/stars.css">
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
     @yield('css')
@@ -39,5 +40,7 @@
     @include('home._footer')
     @yield('footerjs')
 
+
+    @livewireScripts
 </body>
 </html>

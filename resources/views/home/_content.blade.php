@@ -22,7 +22,6 @@
                         </div>
                     </div>
                 </form>
-                @livewireScripts
             </div>
         </div>
     </div>
@@ -168,6 +167,10 @@
                         <div class="post-entry-1-contents">
                             <h2><a href="#">{{ $rs->title }}</a></h2>
                             <span class="meta d-inline-block mb-3">{{ $rs->created_at }} <span class="mx-2">by</span> <a href="#">Admin</a></span>
+                            @php
+                                $avgrate = (int)\App\Http\Controllers\HomeController::avgrate($rs->id);
+                            @endphp
+                            <p class="starability-result" data-rating="{{ $avgrate }}"></p>
                             <p>{{ $rs->description }}</p>
                         </div>
                     </div>

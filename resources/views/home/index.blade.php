@@ -11,11 +11,18 @@
 <div class="ftco-blocks-cover-1">
     <div class="ftco-cover-1 overlay" style="background-image: url({{ Storage::url($featured->image) }});">
         <div class="container">
+            @php
+                $avgrate = (int)\App\Http\Controllers\HomeController::avgrate($featured->id);
+            @endphp
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="feature-car-rent-box-1">
                         <h3><a href="{{ route('car_detail', ['id' => $featured->id]) }}">{{ $featured->title }}</a></h3>
                         <ul class="list-unstyled">
+                            <li>
+                                <span>Rating</span>
+                                <p class="starability-result" data-rating="{{ $avgrate }}"></p>
+                            </li>
                             <li>
                                 <span>Seats</span>
                                 <span class="spec">{{ $featured->seats }}</span>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Car Image Gallery</title>
+    <title>Edit Message</title>
 
 
     <!-- Custom fonts for this template-->

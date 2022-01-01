@@ -48,6 +48,12 @@
                 <span>Contact Messages</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin_comment') }}">
+                <i class="fas fa-fw fa-envelope-square"></i>
+                <span>Comments</span>
+            </a>
+        </li>
 
 
         <!-- Nav Item - Utilities Collapse Menu -->
