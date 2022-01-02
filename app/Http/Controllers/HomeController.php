@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -116,7 +117,8 @@ class HomeController extends Controller
     public function faq()
     {
         $setting = Setting::first();
-        return view('home.faq')->with('setting',$setting);
+        $datalist = Faq::all();
+        return view('home.faq',['setting' => $setting, 'datalist' => $datalist]);
     }
 
     public function login(){

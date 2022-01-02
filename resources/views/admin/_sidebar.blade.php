@@ -26,8 +26,8 @@
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin_category') }}">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Category</span>
+                <i class="fas fa-stream"></i>
+                <span>Categories</span>
             </a>
         </li>
         <li class="nav-item">
@@ -50,8 +50,14 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin_comment') }}">
-                <i class="fas fa-fw fa-envelope-square"></i>
+                <i class="fas fa-comments"></i>
                 <span>Comments</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin_faq') }}">
+                <i class="fas fa-question-circle"></i>
+                <span>FAQs</span>
             </a>
         </li>
 

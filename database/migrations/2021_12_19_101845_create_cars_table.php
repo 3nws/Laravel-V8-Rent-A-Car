@@ -24,7 +24,7 @@ class CreateCarsTable extends Migration
             $table->integer('seats');
             $table->integer('large_bags');
             $table->integer('small_bags');
-            $table->string('detail')->nullable();
+            $table->text('detail')->nullable();
             $table->integer('user_id')->default(0);
             $table->string('status', 5)->nullable()->default('False');
             // created_at and updated_at in timestamps()

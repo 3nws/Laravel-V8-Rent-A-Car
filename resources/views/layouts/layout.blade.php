@@ -25,8 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/css/stars.css">
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
-    @yield('css')
-    @yield('headerjs')
+    @yield('styles')
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">

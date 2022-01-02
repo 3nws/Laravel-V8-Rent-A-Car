@@ -24,4 +24,18 @@
 
 @section('content')
 
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mr-auto">
+                    @foreach($datalist as $rs)
+                        <h4>{{ $rs->question }}</h4>
+                        <p>{!! $rs->answer !!}</p>
+                        <hr>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
