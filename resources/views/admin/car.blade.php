@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+    @include('profile.livewirestyles')
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -53,7 +54,7 @@
                                         <td>{{ $rs->title }}</td>
                                         <td>
                                             @if($rs->image)
-                                                <img src="{{ Storage::url($rs->image) }}" height="40" alt="">
+                                                <img src="{{ Storage::url($rs->image) }}" style="height: 40px !important;" alt="">
                                             @endif
                                         </td>
                                         <td>
