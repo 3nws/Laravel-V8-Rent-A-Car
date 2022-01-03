@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Comments List')
+@section('title', 'Reservation List')
 
 @section('styles')
     <link href="{{ asset('assets') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -15,12 +15,12 @@
         <!-- Main Content -->
         <div id="content">
 
-        @include('admin._topbar')
+            @include('admin._topbar')
 
-        <!-- Begin Page Content -->
+            <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <h6 class="m-0 font-weight-bold text-primary mb-2">Car List</h6>
+                <h6 class="m-0 font-weight-bold text-primary mb-2">Reservation List</h6>
                 <div class="categories card shadow mb-4">
                     <div class="card-header py-3 inline-block">
                         @include('home.message')
@@ -32,30 +32,28 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Car</th>
-                                    <th>Comment</th>
-                                    <th>Rate</th>
+                                    <th>Res. Date</th>
+                                    <th>Days</th>
+                                    <th>Price</th>
                                     <th>Status</th>
-                                    <th>Created At</th>
+                                    <th>Admin Note</th>
                                     <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Cancel</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($datalist as $rs)
                                     <tr>
-                                        @php
-                                            $avgrate = \App\Http\Controllers\HomeController::avgrate($rs->id);
-                                        @endphp
                                         <td>{{ $rs->id }}</td>
                                         <td><a href="{{ route('car_detail', ['id' => $rs->car->id]) }}">{{ $rs->car->title }}</a></td>
-                                        <td>{{ $rs->comment }}</td>
-                                        <td><p class="starability-result" data-rating="{{ $rs->rate }}"></p></td>
+                                        <td>{{ $rs->rezdate }}</td>
+                                        <td>{{ $rs->days }}</td>
+                                        <td>${{ ($rs->price)*($rs->days) }} (${{ $rs->price }}/day)</td>
                                         <td>{{ $rs->status }}</td>
-                                        <td>{{ $rs->created_at }}</td>
-                                        <td><a href="{{ route('admin_comment_show', ['id' => $rs->id]) }}"
-                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=1400, height=900')"><i class="fas fa-edit"></i></a></td>
-                                        <td><a href="{{ route('userdestroycomment', ['id' => $rs->id]) }}"
-                                               onclick="return confirm('Are you sure you want to delete?')"
+                                        <td>{{ $rs->note }}</td>
+                                        <td><a href="{{ route('admin_reservation_edit', ['id' => $rs->id, 'car_id' => $rs->car->id]) }}"><i class="fas fa-edit"></i></a></td>
+                                        <td><a href="{{ route('admin_reservation_delete', ['id' => $rs->id]) }}"
+                                               onclick="return confirm('Are you sure you want to cancel this reservation?')"
                                             ><i class="fas fa-trash-alt"></i></a></td>
                                     </tr>
                                 @endforeach
@@ -70,9 +68,9 @@
 
         </div>
         <!-- End of Main Content -->
-        @endsection
+@endsection
 
-        @section('scripts')
+@section('scripts')
             <script src="{{ asset('assets') }}/js/sb-admin-2.min.js"></script>
             <script src="{{ asset('assets') }}/vendor/datatables/jquery.dataTables.min.js"></script>
             <script src="{{ asset('assets') }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>

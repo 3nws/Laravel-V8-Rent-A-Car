@@ -38,12 +38,15 @@ class HomeController extends Controller
 
         $cars = Car::limit(4)->get();
 
+        $num_of_cars = Car::all()->count();
+
         $data = [
             'setting' => $setting,
             'slider' => $slider,
             'page' => 'home',
             'featured' => $featured,
             'cars' => $cars,
+            'num_of_cars' => $num_of_cars,
         ];
 
         // same thing with return view('home.index', );

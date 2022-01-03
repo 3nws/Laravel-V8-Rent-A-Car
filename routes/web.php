@@ -95,6 +95,16 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::post('update/{id}', [App\Http\Controllers\Admin\CommentController::class, 'update'])->name('admin_comment_update');
     });
 
+    Route::prefix('reservation')->group(function (){
+        Route::get('/', [App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('admin_all_reservation');
+        Route::get('/{status}', [App\Http\Controllers\Admin\ReservationController::class, 'index_w_status'])->name('admin_reservation');
+        Route::get('create/{car_id}', [App\Http\Controllers\Admin\ReservationController::class, 'create'])->name('make_reservation');
+        Route::post('store/{car_id}', [App\Http\Controllers\Admin\ReservationController::class, 'store'])->name('admin_reservation_store');
+        Route::get('edit/{id}/{car_id}', [App\Http\Controllers\Admin\ReservationController::class, 'edit'])->name('admin_reservation_edit');
+        Route::post('update/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'update'])->name('admin_reservation_update');
+        Route::get('delete/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'destroy'])->name('admin_reservation_delete');
+        Route::get('show/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'show'])->name('admin_reservation_show');
+    });
 
 });
 

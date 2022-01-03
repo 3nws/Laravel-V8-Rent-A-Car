@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <h3>Our Offer</h3>
-                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure nesciunt nemo vel earum maxime neque!</p>
+                <p class="mb-4">Here are some nice cars!</p>
                 <p>
                     <a href="#" class="btn btn-primary custom-prev">Previous</a>
                     <span class="mx-2">/</span>

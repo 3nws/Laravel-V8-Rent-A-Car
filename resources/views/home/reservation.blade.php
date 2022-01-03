@@ -35,6 +35,7 @@
                             <th>Res. Date</th>
                             <th>Days</th>
                             <th>Price</th>
+                            <th>Status</th>
                             <th>Edit</th>
                             <th>Cancel</th>
                         </tr>
@@ -47,6 +48,7 @@
                                 <td>{{ $rs->rezdate }}</td>
                                 <td>{{ $rs->days }}</td>
                                 <td>${{ ($rs->price)*($rs->days) }} (${{ $rs->price }}/day)</td>
+                                <td>{{ $rs->status }}</td>
                                 <td><a href="{{ route('user_reservation_edit', ['id' => $rs->id, 'car_id' => $rs->car->id]) }}"><i class="fas fa-edit"></i></a></td>
                                 <td><a href="{{ route('user_reservation_delete', ['id' => $rs->id]) }}"
                                        onclick="return confirm('Are you sure you want to delete')"

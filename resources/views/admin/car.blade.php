@@ -73,7 +73,7 @@
                                         <td>{{ $rs->updated_at }}</td>
                                         <td><a href="{{ route('admin_car_edit', ['id' => $rs->id]) }}"><i class="fas fa-edit"></i></a></td>
                                         <td><a href="{{ route('admin_car_delete', ['id' => $rs->id]) }}"
-                                               onclick="return confirm('Are you sure you want to delete')"
+                                               onclick="return confirm('Are you sure you want to delete?')"
                                             ><i class="fas fa-trash-alt"></i></a></td>
                                     </tr>
                                 @endforeach

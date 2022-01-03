@@ -26,7 +26,7 @@ class CreateReservationsTable extends Migration
             $table->integer('amount')->nullable();
             $table->string('ip', 20)->nullable();
             $table->string('note', 100)->nullable();
-            $table->string('status', 5)->nullable()->default('False');
+            $table->string('status', 10)->nullable()->default('False');
             $table->timestamps();
         });
     }

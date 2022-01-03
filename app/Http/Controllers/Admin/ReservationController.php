@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Models\Reservation;
 use App\Models\Setting;
@@ -18,8 +19,14 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $datalist = Reservation::where('user_id', Auth::id())->get();
-        return view('home.reservation', ['datalist' => $datalist]);
+        $datalist = Reservation::all();
+        return view('admin.reservation', ['datalist' => $datalist]);
+    }
+
+    public function index_w_status($status)
+    {
+        $datalist = Reservation::where('status', $status)->get();
+        return view('admin.reservation', ['datalist' => $datalist]);
     }
 
     /**
@@ -29,9 +36,7 @@ class ReservationController extends Controller
      */
     public function create($car_id)
     {
-        $setting = Setting::first();
-        $car = Car::find($car_id);
-        return view('home.make_reservation', ['car_id' => $car_id, 'setting' => $setting, 'car' => $car]);
+        //
     }
 
     /**
@@ -42,32 +47,7 @@ class ReservationController extends Controller
      */
     public function store(Request $request, $car_id)
     {
-        $data = new Reservation;
-        $car = Car::find($car_id);
-        if ($request->input('resdate')){
-            $data->rezdate = $request->input('resdate');
-        }else{
-            $data->rezdate = Carbon::now()->toDateString();
-        }
-        $data->reztime = $request->input('restime');
-        $data->returndate = $request->input('returndate');
-        $data->returntime = $request->input('returntime');
-        $data->price = $car->price;
-        $start = Carbon::parse($data->rezdate);
-        $end = Carbon::parse($data->returndate);
-        $data->ip = $_SERVER['REMOTE_ADDR'];
-        $days = $start->diffInDays($end, false);
-        if ($days < 1){
-            return back()->with('error', 'Pick valid dates, please.');
-        }else{
-            $data->days = $days;
-        }
-        $data->user_id = Auth::id();
-        $data->car_id = $car_id;
-        $data->status = "New";
-        $data->save();
-
-        return redirect()->route('user_reservation')->with('success', 'Reservation made.');
+        //
     }
 
     /**
@@ -92,7 +72,7 @@ class ReservationController extends Controller
         $setting = Setting::first();
         $data = Reservation::find($id);
         $car = Car::find($car_id);
-        return view('home.edit_reservation', ['setting' => $setting, 'data' => $data, 'car' => $car]);
+        return view('admin.edit_reservation', ['setting' => $setting, 'data' => $data, 'car' => $car]);
     }
 
     /**
@@ -116,6 +96,8 @@ class ReservationController extends Controller
         $start = Carbon::parse($data->rezdate);
         $end = Carbon::parse($data->returndate);
         $days = $start->diffInDays($end, false);
+        $data->status = $request->input('status');
+        $data->note = $request->input('note');
         if ($days < 1){
             return back()->with('error', 'Pick valid dates, please.');
         }else{
@@ -123,7 +105,7 @@ class ReservationController extends Controller
         }
         $data->save();
 
-        return redirect()->route('user_reservation')->with('success', 'Reservation updated.');
+        return redirect()->route('admin_all_reservation')->with('success', 'Reservation updated.');
     }
 
     /**
@@ -138,6 +120,6 @@ class ReservationController extends Controller
         $data->status = "Canceled";
         $data->save();
 
-        return redirect()->route('user_reservation')->with('success','Reservation canceled.');
+        return redirect()->route('admin_all_reservation')->with('success','Reservation canceled.');
     }
 }

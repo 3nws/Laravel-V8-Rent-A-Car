@@ -9,7 +9,7 @@
                             <h3 class="m-0"></h3>
                         </div>
                         <div class="col-md-6 text-md-right">
-                            <span class="text-primary">TODO(add number of cars here)</span> <span>cars available</span></span>
+                            <span class="text-primary">{{ $num_of_cars }}</span> <span>cars available</span></span>
                         </div>
                     </div>
                     <div class="row">
@@ -42,7 +42,7 @@
               </span>
                     <div class="service-1-contents">
                         <h3>Repair</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+                        <p>We repair your cars.</p>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
               </span>
                     <div class="service-1-contents">
                         <h3>Car Accessories</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+                        <p>We have none.</p>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
               </span>
                     <div class="service-1-contents">
                         <h3>Own a Car</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+                        <p>Sorry, we only rent.</p>
                     </div>
                 </div>
             </div>
@@ -75,17 +75,17 @@
     <div class="row justify-content-center text-center">
         <div class="col-7 text-center mb-5">
             <h2>How it works</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda, dolorum necessitatibus eius earum voluptates sed!</p>
+            <p>You like a car. You rent the car.</p>
         </div>
     </div>
     <div class="how-it-works d-flex">
         <div class="step">
             <span class="number"><span>01</span></span>
-            <span class="caption">Time &amp; Place</span>
+            <span class="caption">Car</span>
         </div>
         <div class="step">
             <span class="number"><span>02</span></span>
-            <span class="caption">Car</span>
+            <span class="caption">Time</span>
         </div>
         <div class="step">
             <span class="number"><span>03</span></span>
@@ -107,14 +107,14 @@
         <div class="row justify-content-center text-center mb-5">
             <div class="col-7 text-center mb-5">
                 <h2>Customer Testimony</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda, dolorum necessitatibus eius earum voluptates sed!</p>
+                <p>Very cool website!</p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4 mb-4 mb-lg-0">
                 <div class="testimonial-2">
                     <blockquote class="mb-4">
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
+                        <p>"Literally the best car rental site I have used!"</p>
                     </blockquote>
                     <div class="d-flex v-card align-items-center">
                         <img src="{{ asset('assets') }}/images/person_1.jpg" alt="Image" class="img-fluid mr-3">
@@ -125,7 +125,7 @@
             <div class="col-lg-4 mb-4 mb-lg-0">
                 <div class="testimonial-2">
                     <blockquote class="mb-4">
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
+                        <p>"No competitor whatsoever!"</p>
                     </blockquote>
                     <div class="d-flex v-card align-items-center">
                         <img src="{{ asset('assets') }}/images/person_2.jpg" alt="Image" class="img-fluid mr-3">
@@ -136,7 +136,7 @@
             <div class="col-lg-4 mb-4 mb-lg-0">
                 <div class="testimonial-2">
                     <blockquote class="mb-4">
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
+                        <p>"The owner of this website sure is cool!"</p>
                     </blockquote>
                     <div class="d-flex v-card align-items-center">
                         <img src="{{ asset('assets') }}/images/person_3.jpg" alt="Image" class="img-fluid mr-3">

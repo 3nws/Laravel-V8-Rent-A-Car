@@ -58,7 +58,7 @@
                                         <td><a href="{{ route('admin_message_edit', ['id' => $rs->id]) }}"
                                                onclick="return !window.open(this.href, '', 'top=50 left=100 width=1400, height=900')"><i class="fas fa-edit"></i></a></td>
                                         <td><a href="{{ route('admin_message_delete', ['id' => $rs->id]) }}"
-                                               onclick="return confirm('Are you sure you want to delete')"
+                                               onclick="return confirm('Are you sure you want to delete?')"
                                             ><i class="fas fa-trash-alt"></i></a></td>
                                     </tr>
                                 @endforeach
