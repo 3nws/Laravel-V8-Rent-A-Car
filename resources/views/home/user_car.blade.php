@@ -57,7 +57,7 @@
                                     @foreach($datalist as $rs)
                                         <tr>
                                             <td>{{ $rs->id }}</td>
-                                            <td>{{ $rs->title }}</td>
+                                            <td><a href="{{ route('car_detail', ['id' => $rs->id]) }}">{{ $rs->title }}</a></td>
                                             <td>
                                                 @if($rs->image)
                                                     <img src="{{ Storage::url($rs->image) }}" height="40" alt="">

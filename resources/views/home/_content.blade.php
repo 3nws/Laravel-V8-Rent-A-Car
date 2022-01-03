@@ -159,13 +159,13 @@
             @foreach($cars as $rs)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="post-entry-1 h-100">
-                        <a href="#">
+                        <a href="{{ route('car_detail', ['id' => $rs->id]) }}">
                             <img src="{{ Storage::url($rs->image) }}" alt="Image"
                                  style="height: 175px;"
                                  class="img-fluid">
                         </a>
                         <div class="post-entry-1-contents">
-                            <h2><a href="#">{{ $rs->title }}</a></h2>
+                            <h2><a href="{{ route('car_detail', ['id' => $rs->id]) }}">{{ $rs->title }}</a></h2>
                             <span class="meta d-inline-block mb-3">{{ $rs->created_at }} <span class="mx-2">by</span> <a href="#">Admin</a></span>
                             @php
                                 $avgrate = (int)\App\Http\Controllers\HomeController::avgrate($rs->id);

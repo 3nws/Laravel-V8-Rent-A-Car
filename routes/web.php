@@ -126,6 +126,16 @@ Route::middleware('auth')->prefix('user')->namespace('user')->group(function () 
         Route::get('delete/{id}/{car_id}', [App\Http\Controllers\ImageController::class, 'destroy'])->name('user_image_delete');
         Route::get('show', [App\Http\Controllers\ImageController::class, 'show'])->name('user_image_show');
     });
+
+    Route::prefix('reservation')->group(function (){
+        Route::get('/', [App\Http\Controllers\ReservationController::class, 'index'])->name('user_reservation');
+        Route::get('create/{car_id}', [App\Http\Controllers\ReservationController::class, 'create'])->name('make_reservation');
+        Route::post('store/{car_id}', [App\Http\Controllers\ReservationController::class, 'store'])->name('user_reservation_store');
+        Route::get('edit/{id}/{car_id}', [App\Http\Controllers\ReservationController::class, 'edit'])->name('user_reservation_edit');
+        Route::post('update/{id}', [App\Http\Controllers\ReservationController::class, 'update'])->name('user_reservation_update');
+        Route::get('delete/{id}', [App\Http\Controllers\ReservationController::class, 'destroy'])->name('user_reservation_delete');
+        Route::get('show/{id}', [App\Http\Controllers\ReservationController::class, 'show'])->name('user_reservation_show');
+    });
 });
 
 

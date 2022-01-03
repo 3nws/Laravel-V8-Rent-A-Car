@@ -15,7 +15,7 @@
 
                     @foreach($slider as $rs)
                     <div class="item-1">
-                        <a href="#"><img src="{{ Storage::url($rs->image) }}" style="height: 175px;" alt="Image" class="img-fluid"></a>
+                        <a href="{{ route('car_detail', ['id' => $rs->id]) }}"><img src="{{ Storage::url($rs->image) }}" style="height: 175px;" alt="Image" class="img-fluid"></a>
                         <div class="item-1-contents">
                             <div class="text-center">
                                 <h3><a href="{{ route('car_detail', ['id' => $rs->id]) }}">{{ $rs->title }}</a></h3>

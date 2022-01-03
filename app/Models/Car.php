@@ -17,4 +17,8 @@ class Car extends Model
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+
+    public function reservations(){
+        return $this->belongsTo(Reservation::class);
+    }
 }

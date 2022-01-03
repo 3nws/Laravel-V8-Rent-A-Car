@@ -39,7 +39,7 @@
                         </ul>
                         <div class="d-flex align-items-center bg-light p-3">
                             <span>${{ $featured->price }}/day</span>
-                            <a href="{{ route('contact') }}" class="ml-auto btn btn-primary">Rent Now</a>
+                            <a href="{{ route('make_reservation', ['car_id' => $featured->id]) }}" class="ml-auto btn btn-primary">Rent Now</a>
                         </div>
                     </div>
                 </div>
