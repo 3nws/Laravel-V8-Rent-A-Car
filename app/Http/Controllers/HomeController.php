@@ -64,7 +64,8 @@ class HomeController extends Controller
         $setting = Setting::first();
         $data = Car::find($id);
         $comments = Comment::where('car_id', $id)->get();
-        return view('home.car_detail', ['data' => $data, 'setting' => $setting, 'comments' => $comments]);
+        $category = $data->category;
+        return view('home.car_detail', ['data' => $data, 'setting' => $setting, 'comments' => $comments, 'category' => $category]);
     }
 
     public function get_car(Request $request)

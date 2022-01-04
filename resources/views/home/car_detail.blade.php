@@ -32,20 +32,7 @@
                     <p>{!! $data->detail !!}</p>
 
 
-                    <div class="pt-5">
-                        <p class="text-muted">Keywords:
-                            @php
-                                $arr = explode(" ", $data->keywords);
-                            @endphp
-                            @for($i = 0; $i < count(explode(" ", $data->keywords)); $i++)
-                                @if ($i==0)
-                                    {{ $arr[$i] }}
-                                @else
-                                    ,{{ $arr[$i] }}
-                                @endif
-                            @endfor
-                        </p>
-                    </div>
+
 
 
                     <div class="pt-5">
@@ -79,17 +66,23 @@
                 </div>
                 <div class="col-md-4 sidebar">
                     <div class="sidebar-box">
-                        <form action="#" class="search-form">
-                            <div class="form-group">
-                                <span class="icon fa fa-search"></span>
-                                <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="sidebar-box">
                         <div class="categories">
-                            <h3>Categories</h3>
-                                <li><a href="#">TODO</a></li>
+                            <h3>Category</h3>
+                                <li><a href="{{ route('category_cars', ['id' => $data->category->id]) }}">{{ $category->title }}</a></li>
+                        </div>
+                        <div class="pt-5">
+                            <p class="text-muted">Keywords:
+                                @php
+                                    $arr = explode(" ", $data->keywords);
+                                @endphp
+                                @for($i = 0; $i < count(explode(" ", $data->keywords)); $i++)
+                                    @if ($i==0)
+                                        {{ $arr[$i] }}
+                                    @else
+                                        ,{{ $arr[$i] }}
+                                    @endif
+                                @endfor
+                            </p>
                         </div>
                     </div>
 
