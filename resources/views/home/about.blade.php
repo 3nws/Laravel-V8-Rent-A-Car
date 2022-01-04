@@ -27,10 +27,7 @@
     <div class="site-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-5 mb-5 mb-lg-0 order-lg-2">
-                    <img src="{{ asset('assets') }}/images/hero_2.jpg" alt="Image" class="img-fluid">
-                </div>
-                <div class="col-lg-6 mr-auto">
+                <div class="col-lg-12 mr-auto">
                     <h2>Rental Car Company</h2>
                     <p>{!! $setting->aboutus !!}</p>
                 </div>

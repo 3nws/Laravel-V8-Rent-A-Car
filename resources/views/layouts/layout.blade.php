@@ -29,7 +29,6 @@
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-@include('profile.livewirestyles')
 
     @include('home._header')
     @yield('jumbo')

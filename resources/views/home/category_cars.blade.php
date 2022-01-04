@@ -9,7 +9,7 @@
 @endsection
 
 <div class="ftco-blocks-cover-1">
-    <div class="ftco-cover-1 overlay innerpage" style="background-image: url('{{ asset('assets') }}/images/hero_2.jpg')">
+    <div class="ftco-cover-1 overlay innerpage" style="background-image: url({{ Storage::url($category->image) }})">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-6 text-center">

@@ -27,8 +27,11 @@
     <div class="site-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 mr-auto">
-                    <p>{!! $setting->references !!}</p>
+                <div class="col-lg-12 mr-auto">
+                    <div style="margin-left: -5em;">
+                        {!! $setting->references !!}
+                    </div>
+
                 </div>
             </div>
         </div>

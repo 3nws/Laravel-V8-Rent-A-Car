@@ -20,8 +20,10 @@
     </div>
 </div>
 
+
 @section('content')
 
+    @include('profile.livewirestyles')
     <div class="site-section bg-light" id="contact-section">
         <div class="row">
             <div class="col-lg-10 pr-0" style="margin-top: -1em;">

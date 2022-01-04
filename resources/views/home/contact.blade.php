@@ -28,7 +28,9 @@
         <div class="container">
             @include('home.message')
             <div class="row">
+                <div class="col-lg-12 mb-5" >
                     {!! $setting->contact !!}
+                </div>
             </div>
         </div>
     </div>

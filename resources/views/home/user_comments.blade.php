@@ -20,7 +20,9 @@
     </div>
 </div>
 
+
 @section('content')
+    @include('profile.livewirestyles')
 
     <div class="site-section bg-light" id="contact-section">
         <div class="row">
