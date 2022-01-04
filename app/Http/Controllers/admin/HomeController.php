@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+
+    // preventing requests through programs like postman
+    public function __construct(){
+        $this->middleware('admin');
+    }
+
     public function index(){
         $datalist1 = DB::select("SELECT * FROM reservations WHERE status != 'Canceled'");
         $datalist2 = Message::where('status', 'New')->get();
