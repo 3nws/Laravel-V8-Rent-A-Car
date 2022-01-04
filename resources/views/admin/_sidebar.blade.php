@@ -60,6 +60,12 @@
                 <span>FAQs</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin_user') }}">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+        </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">

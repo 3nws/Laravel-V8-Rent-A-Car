@@ -39,10 +39,9 @@
                                     <th>Image Gallery</th>
                                     <th>Category</th>
                                     <th>Price</th>
-                                    <th>User ID</th>
+                                    <th>User</th>
                                     <th>Status</th>
                                     <th>Created At</th>
-                                    <th>Updated At</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -51,7 +50,11 @@
                                 @foreach($datalist as $rs)
                                     <tr>
                                         <td>{{ $rs->id }}</td>
-                                        <td>{{ $rs->title }}</td>
+                                        <td>
+                                            <a href="{{ route('car_detail', ['id' => $rs->id]) }}"
+                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=1400, height=900')">
+                                                {{ $rs->title }}</a>
+                                        </td>
                                         <td>
                                             @if($rs->image)
                                                 <img src="{{ Storage::url($rs->image) }}" style="height: 40px !important;" alt="">
@@ -67,10 +70,14 @@
                                             {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title) }}
                                         </td>
                                         <td>{{ $rs->price }}</td>
-                                        <td>{{ $rs->user_id }}</td>
+                                        <td>
+                                            <a href="{{ route('admin_user_roles', ['id' => $rs->user->id]) }}"
+                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=1400, height=900')">
+                                                {{ $rs->user->name }}
+                                            </a>
+                                        </td>
                                         <td>{{ $rs->status }}</td>
                                         <td>{{ $rs->created_at }}</td>
-                                        <td>{{ $rs->updated_at }}</td>
                                         <td><a href="{{ route('admin_car_edit', ['id' => $rs->id]) }}"><i class="fas fa-edit"></i></a></td>
                                         <td><a href="{{ route('admin_car_delete', ['id' => $rs->id]) }}"
                                                onclick="return confirm('Are you sure you want to delete?')"

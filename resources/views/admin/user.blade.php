@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Comments List')
+@section('title', 'User List')
 
 @section('styles')
     <link href="{{ asset('assets') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -15,12 +15,12 @@
         <!-- Main Content -->
         <div id="content">
 
-        @include('admin._topbar')
+            @include('admin._topbar')
 
-        <!-- Begin Page Content -->
+            <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <h6 class="m-0 font-weight-bold text-primary mb-2">Car List</h6>
+                <h6 class="m-0 font-weight-bold text-primary mb-2">User List</h6>
                 <div class="categories card shadow mb-4">
                     <div class="card-header py-3 inline-block">
                         @include('home.message')
@@ -31,12 +31,12 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Car</th>
-                                    <th>Comment</th>
-                                    <th>User</th>
-                                    <th>Rate</th>
-                                    <th>Status</th>
-                                    <th>Created At</th>
+                                    <th>PFP</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Roles</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -44,35 +44,35 @@
                                 <tbody>
                                 @foreach($datalist as $rs)
                                     <tr>
-                                        @php
-                                            $avgrate = \App\Http\Controllers\HomeController::avgrate($rs->id);
-                                        @endphp
                                         <td>{{ $rs->id }}</td>
                                         <td>
-                                            <a href="{{ route('car_detail', ['id' => $rs->car->id]) }}"
-                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=1400, height=900')">
-                                                {{ $rs->car->title }}
-                                            </a>
+                                            @if($rs->profile_photo_path)
+                                                <img src="{{ Storage::url($rs->profile_photo_path) }}" style="height: 40px !important; border-radius: 10px;" alt="">
+                                            @endif
                                         </td>
-                                        <td>{{ $rs->comment }}</td>
                                         <td>
-                                            <a href="{{ route('admin_user_roles', ['id' => $rs->user->id]) }}"
+                                            {{ $rs->name }}
+                                        </td>
+                                        <td>{{ $rs->email }}</td>
+                                        <td>{{ $rs->phone }}</td>
+                                        <td>{{ $rs->address }}</td>
+                                        <td>
+                                            @foreach($rs->roles as $role)
+                                                {{ $role->name }},
+                                            @endforeach
+                                            <a href="{{ route('admin_user_roles', ['id' => $rs->id]) }}"
                                                onclick="return !window.open(this.href, '', 'top=50 left=100 width=1400, height=900')">
-                                                {{ $rs->user->name }}
+                                                <i class="fas fa-plus-circle"></i>
                                             </a>
                                         </td>
-                                        <td><p class="starability-result" data-rating="{{ $rs->rate }}"></p></td>
-                                        <td>{{ $rs->status }}</td>
-                                        <td>{{ $rs->created_at }}</td>
-                                        <td><a href="{{ route('admin_comment_show', ['id' => $rs->id]) }}"
-                                               onclick="return !window.open(this.href, '', 'top=50 left=100 width=1400, height=900')"><i class="fas fa-edit"></i></a></td>
-                                        <td><a href="{{ route('userdestroycomment', ['id' => $rs->id]) }}"
+                                        <td><a href="{{ route('admin_user_edit', ['id' => $rs->id]) }}"><i class="fas fa-edit"></i></a></td>
+                                        <td><a href="{{ route('admin_user_delete', ['id' => $rs->id]) }}"
                                                onclick="return confirm('Are you sure you want to delete?')"
                                             ><i class="fas fa-trash-alt"></i></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
-                            </table>
+                                </table>
                         </div>
                     </div>
                 </div>
@@ -82,9 +82,9 @@
 
         </div>
         <!-- End of Main Content -->
-        @endsection
+@endsection
 
-        @section('scripts')
+@section('scripts')
             <script src="{{ asset('assets') }}/js/sb-admin-2.min.js"></script>
             <script src="{{ asset('assets') }}/vendor/datatables/jquery.dataTables.min.js"></script>
             <script src="{{ asset('assets') }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>

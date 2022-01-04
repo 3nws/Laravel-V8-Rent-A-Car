@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Edit Message</title>
+    <title>User Information</title>
 
 
     <!-- Custom fonts for this template-->
@@ -43,14 +43,14 @@
                         <div class="card-body p-0">
                             <!-- Nested Row within Card Body -->
                             <div class="row">
-                                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                                <div class="col-lg-5 d-none d-lg-block bg-register-image" style="background-image: url({{ Storage::url($data->profile_photo_path) }})"></div>
                                 <div class="col-lg-7">
                                     <div class="p-5">
                                         <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">Edit Contact Message</h1>
+                                            <h1 class="h4 text-gray-900 mb-4">User Information</h1>
                                         </div>
                                         @include('home.message')
-                                        <form class="user" action="{{ route('admin_message_update', ['id' => $data->id]) }}" method="post">
+                                        <form class="user" action="{{ route('admin_user_roles_add', ['id' => $data->id]) }}" method="post">
                                             @csrf
                                             <table>
                                                 <tr>
@@ -79,37 +79,47 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        Subject:
+                                                        Address:
                                                     </td>
                                                     <td>
-                                                        {{ $data->subject }}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Message:
-                                                    </td>
-                                                    <td>
-                                                        {{ $data->message }}
+                                                        {{ $data->address }}
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        Admin note:
+                                                        Roles:
+                                                    </td>
+                                                    <td>
+                                                        @foreach($data->roles as $role)
+                                                            {{ $role->name }}
+                                                            <a href="{{ route('admin_user_roles_delete', ['userid' => $data->id, 'roleid' => $role->id]) }}"
+                                                               onclick="return confirm('Are you sure you want to delete?')">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </a>
+                                                            <br>
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Add Role:
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control form-control-user mt-3"
-                                                                   name="note"
-                                                                   value="{{ $data->note }}"
-                                                                   placeholder="Admin note">
+                                                            <select name="roleid" id=""
+                                                                    class="form-control">
+                                                                <option value="2" selected>Select a role to add</option>
+                                                                <option value="1">admin</option>
+                                                                <option value="2">user</option>
+                                                                <option value="3">test</option>
+                                                            </select>
                                                         </div>
                                                     </td>
                                                 </tr>
                                             </table>
 
                                             <button type="submit" class="btn btn-primary btn-user btn-block">
-                                                Edit Message
+                                                Update User Roles
                                             </button>
                                         </form>
                                     </div>
