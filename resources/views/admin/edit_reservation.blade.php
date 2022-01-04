@@ -68,7 +68,7 @@
                                                         class="form-control">
                                                     <option value="{{ $data->status }}" selected>{{ $data->status }}</option>
                                                     <option value="Confirmed">Confirmed</option>
-                                                    <option value="Canceled">Canceled</option>
+                                                    <option value="Cancelled">Cancelled</option>
                                                     <option value="Finished">Finished</option>
                                                 </select>
                                             </div>

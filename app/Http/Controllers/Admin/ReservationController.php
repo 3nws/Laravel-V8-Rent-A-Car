@@ -117,9 +117,9 @@ class ReservationController extends Controller
     public function destroy(Reservation $reservation, $id)
     {
         $data = Reservation::find($id);
-        $data->status = "Canceled";
+        $data->status = "Cancelled";
         $data->save();
 
-        return redirect()->route('admin_all_reservation')->with('success','Reservation canceled.');
+        return redirect()->route('admin_all_reservation')->with('success','Reservation cancelled.');
     }
 }

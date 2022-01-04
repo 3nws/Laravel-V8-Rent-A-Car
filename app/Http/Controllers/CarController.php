@@ -31,7 +31,8 @@ class CarController extends Controller
     public function create()
     {
         $datalist = Category::with('children')->get();
-        return view('home.user_car_add', ['datalist' => $datalist]);
+        $setting = Setting::first();
+        return view('home.user_car_add', ['datalist' => $datalist, 'setting' => $setting]);
     }
 
     /**

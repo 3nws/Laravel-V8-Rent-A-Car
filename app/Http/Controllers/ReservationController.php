@@ -20,6 +20,22 @@ class ReservationController extends Controller
     {
         $setting = Setting::first();
         $datalist = Reservation::where('user_id', Auth::id())->get();
+        foreach ($datalist as $rs){
+            $start = Carbon::parse(Carbon::now()->toDateString());
+            $end = Carbon::parse($rs->returndate);
+            $diff = $start->diffInDays($end, false);
+//            dd($start, $end, $diff);
+            if($diff < 1){
+                if($rs->status == "Cancelled"){
+                    //
+                }elseif ($rs->status == "New"){
+                    $rs->status = "Cancelled";
+                }else{
+                    $rs->status = "Finished";
+                }
+                $rs->save();
+            }
+        }
         return view('home.reservation', ['datalist' => $datalist, 'setting' => $setting]);
     }
 
@@ -56,8 +72,8 @@ class ReservationController extends Controller
         $data->price = $car->price;
         $start = Carbon::parse($data->rezdate);
         $end = Carbon::parse($data->returndate);
-        $data->ip = $_SERVER['REMOTE_ADDR'];
         $days = $start->diffInDays($end, false);
+        $data->ip = $_SERVER['REMOTE_ADDR'];
         if ($days < 1){
             return back()->with('error', 'Pick valid dates, please.');
         }else{
@@ -117,6 +133,7 @@ class ReservationController extends Controller
         $start = Carbon::parse($data->rezdate);
         $end = Carbon::parse($data->returndate);
         $days = $start->diffInDays($end, false);
+        $data->status = "New";
         if ($days < 1){
             return back()->with('error', 'Pick valid dates, please.');
         }else{
@@ -136,9 +153,9 @@ class ReservationController extends Controller
     public function destroy(Reservation $reservation, $id)
     {
         $data = Reservation::find($id);
-        $data->status = "Canceled";
+        $data->status = "Cancelled";
         $data->save();
 
-        return redirect()->route('user_reservation')->with('success','Reservation canceled.');
+        return redirect()->route('user_reservation')->with('success','Reservation cancelled.');
     }
 }

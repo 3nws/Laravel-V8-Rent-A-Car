@@ -17,7 +17,7 @@ class HomeController extends Controller
     }
 
     public function index(){
-        $datalist1 = DB::select("SELECT * FROM reservations WHERE status != 'Canceled'");
+        $datalist1 = DB::select("SELECT * FROM reservations WHERE status != 'Cancelled'");
         $datalist2 = Message::where('status', 'New')->get();
         $total_earnings = 0;
         foreach ($datalist1 as $rs){

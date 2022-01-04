@@ -80,7 +80,7 @@
                     <a class="collapse-item" href="{{ route('admin_all_reservation') }}">All Reservations</a>
                     <a class="collapse-item" href="{{ route('admin_reservation', ['status' => 'New']) }}">New Reservations</a>
                     <a class="collapse-item" href="{{ route('admin_reservation', ['status' => 'Confirmed']) }}">Confirmed Reservations</a>
-                    <a class="collapse-item" href="{{ route('admin_reservation', ['status' => 'Canceled']) }}">Canceled Reservations</a>
+                    <a class="collapse-item" href="{{ route('admin_reservation', ['status' => 'Cancelled']) }}">Canceled Reservations</a>
                     <a class="collapse-item" href="{{ route('admin_reservation', ['status' => 'Finished']) }}">Finished Reservations</a>
                 </div>
             </div>

@@ -42,7 +42,7 @@
                                 </li>
                             </ul>
                             <div class="d-flex action">
-                                <a href="{{ route('contact') }}" class="btn btn-primary">Rent Now</a>
+                                <a href="{{ route('make_reservation', ['car_id' => $rs->id]) }}" class="ml-auto btn btn-primary">Rent Now</a>
                             </div>
                         </div>
                     </div>

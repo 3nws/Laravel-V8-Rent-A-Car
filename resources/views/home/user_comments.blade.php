@@ -10,6 +10,10 @@
     {{ $setting->keywords }}
 @endsection
 
+@section('styles')
+    <link href="{{ asset('assets') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+@endsection
+
 <div class="ftco-blocks-cover-1">
     <div class="ftco-cover-1 overlay innerpage" style="background-image: url('{{ asset('assets') }}/images/hero_2.jpg')">
         <div class="container">
@@ -31,7 +35,8 @@
             <div class="col-lg-10 pr-0" style="margin-top: -1em;">
                 <div class="container">
                     @include('home.message')
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -60,6 +65,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-2 ml-auto pl-0 pr-5">
@@ -69,3 +75,52 @@
     </div>
 
 @endsection
+
+@section('footerjs')
+    <script src="{{ asset('assets') }}/js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('assets') }}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('assets') }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('assets') }}/js/demo/datatables-demo.js"></script>
+    <!-- Page level plugins -->
+    <script src="{{ asset('assets') }}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('assets') }}/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('assets') }}/js/demo/datatables-demo.js"></script>
+    <script>
+        (function() {
+            var ws = new WebSocket('ws://' + window.location.host + '/jb-server-page?reloadServiceClientId=1');
+            ws.onmessage = function (msg) {
+                if (msg.data === 'reload') {
+                    window.location.reload();
+                }
+                if (msg.data.startsWith('update-css ')) {
+                    var messageId = msg.data.substring(11);
+                    var links = document.getElementsByTagName('link');
+                    for (var i = 0; i < links.length; i++) {
+                        var link = links[i];
+                        if (link.rel !== 'stylesheet') continue;
+                        var clonedLink = link.cloneNode(true);
+                        var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                        if (newHref !== link.href) {
+                            clonedLink.href = newHref;
+                        }
+                        else {
+                            var indexOfQuest = newHref.indexOf('?');
+                            if (indexOfQuest >= 0) {
+                                // to support ?foo#hash
+                                clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                    newHref.substring(indexOfQuest + 1);
+                            }
+                            else {
+                                clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                            }
+                        }
+                        link.replaceWith(clonedLink);
+                    }
+                }
+            };
+        })();
+    </script>
+@endsection
+
