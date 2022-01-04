@@ -67,8 +67,10 @@
                 <div class="col-md-4 sidebar">
                     <div class="sidebar-box">
                         <div class="categories">
-                            <h3>Category</h3>
-                                <li><a href="{{ route('category_cars', ['id' => $data->category->id]) }}">{{ $category->title }}</a></li>
+                            <h3>Categories Path</h3>
+                                <li>
+                                    {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($data->category, $data->category->title) }}
+                                </li>
                         </div>
                         <div class="pt-5">
                             <p class="text-muted">Keywords:
