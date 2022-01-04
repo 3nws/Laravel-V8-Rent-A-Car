@@ -18,8 +18,9 @@ class ReservationController extends Controller
      */
     public function index()
     {
+        $setting = Setting::first();
         $datalist = Reservation::where('user_id', Auth::id())->get();
-        return view('home.reservation', ['datalist' => $datalist]);
+        return view('home.reservation', ['datalist' => $datalist, 'setting' => $setting]);
     }
 
     /**

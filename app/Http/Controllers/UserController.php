@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,13 +17,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('home.user_profile');
+        $setting = Setting::first();
+        return view('home.user_profile')->with('setting', $setting);
     }
 
     public function my_comments()
     {
+        $setting = Setting::first();
         $datalist = Comment::where('user_id', Auth::id())->get();
-        return view('home.user_comments', ['datalist' => $datalist]);
+        return view('home.user_comments', ['datalist' => $datalist, 'setting' => $setting]);
     }
 
     public function destroy_comment(Comment $comment, $id)

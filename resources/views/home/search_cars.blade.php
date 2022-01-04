@@ -3,9 +3,11 @@
 @section('title', $search . ' Car List')
 
 @section('description')
+    {{ $setting->description }}
 @endsection
 
 @section('keywords')
+    {{ $setting->keywords }}
 @endsection
 
 <div class="ftco-blocks-cover-1">

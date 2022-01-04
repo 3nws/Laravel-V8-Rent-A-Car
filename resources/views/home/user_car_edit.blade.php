@@ -3,10 +3,12 @@
 @section('title', 'Edit Car')
 
 @section('description')
-
+    {{ $setting->description }}
 @endsection
 
-@section('keywords', 'user profile')
+@section('keywords')
+    {{ $setting->keywords }}
+@endsection
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets') }}/css/fileupload.css">

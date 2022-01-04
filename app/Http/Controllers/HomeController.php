@@ -83,7 +83,8 @@ class HomeController extends Controller
 
     public function car_list($search){
         $datalist = Car::where('title', 'like', '%'.$search.'%')->get();
-        return view('home.search_cars', ['search' => $search, 'datalist' => $datalist]);
+        $setting = Setting::first();
+        return view('home.search_cars', ['search' => $search, 'datalist' => $datalist, 'setting' => $setting]);
     }
 
     public function category_cars($id)

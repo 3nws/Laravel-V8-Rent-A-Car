@@ -3,10 +3,12 @@
 @section('title', 'My Car Listings')
 
 @section('description')
-
+    {{ $setting->description }}
 @endsection
 
-@section('keywords', 'user profile')
+@section('keywords')
+    {{ $setting->keywords }}
+@endsection
 
 @section('styles')
     <link href="{{ asset('assets') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Category;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +19,8 @@ class CarController extends Controller
     public function index()
     {
         $datalist = Car::where('user_id', Auth::id())->get();
-        return view('home.user_car', ['datalist' => $datalist]);
+        $setting = Setting::first();
+        return view('home.user_car', ['datalist' => $datalist, 'setting' => $setting]);
     }
 
     /**

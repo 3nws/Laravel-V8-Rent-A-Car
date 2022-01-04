@@ -38,6 +38,9 @@
                     <div class="pt-5">
                         @php
                             $avgrate = \App\Http\Controllers\HomeController::avgrate($data->id);
+                            if (!$avgrate){
+                                $avgrate = 0;
+                            }
                         @endphp
                         <h3 class="mb-5">{{ $avgrate }} stars on {{ count($comments) }} Comments</h3>
                         <ul class="comment-list">

@@ -3,10 +3,12 @@
 @section('title', 'User Profile')
 
 @section('description')
-
+    {{ $setting->description }}
 @endsection
 
-@section('keywords', 'user profile')
+@section('keywords')
+    {{ $setting->keywords }}
+@endsection
 
 @section('styles')
     <!-- Custom fonts for this template-->

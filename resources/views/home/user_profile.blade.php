@@ -3,10 +3,12 @@
 @section('title', 'User Profile')
 
 @section('description')
-
+    {{ $setting->description }}
 @endsection
 
-@section('keywords', 'user profile')
+@section('keywords')
+    {{ $setting->keywords }}
+@endsection
 
 <div class="ftco-blocks-cover-1">
     <div class="ftco-cover-1 overlay innerpage" style="background-image: url('{{ asset('assets') }}/images/hero_2.jpg')">
