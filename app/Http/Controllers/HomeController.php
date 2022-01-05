@@ -36,7 +36,9 @@ class HomeController extends Controller
 
         $slider = DB::select("SELECT * FROM cars WHERE status='True' LIMIT 3");
 
-        $featured = DB::table('cars')->inRandomOrder()->first();
+//        $featured = DB::table('cars')->inRandomOrder()->first();
+
+        $featured = DB::select("SELECT * FROM cars WHERE status='True' ORDER BY RAND() LIMIT 1")[0];
 
         $cars = Car::limit(4)->get();
 
