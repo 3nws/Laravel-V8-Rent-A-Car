@@ -28,7 +28,7 @@
                         <ul class="list-unstyled">
                             @if($setting->facebook != null)<li><a href="#" target="_blank"><i class="fab fa-facebook mr-1"></i>Facebook</a></li>@endif
                             @if($setting->instagram != null)<li><a href="#" target="_blank"><i class="fab fa-instagram mr-2"></i>Instagram</a></li>@endif
-                            @if($setting->twitter != null)<li><a href="#" target="_blank"><i class="fab fa-twitter mr-1"></i>Twitter</a></li>@endif
+                            @if($setting->twitter != null)<li><a href="{{ $setting->twitter }}" target="_blank"><i class="fab fa-twitter mr-1"></i>Twitter</a></li>@endif
                             <li><a href="https://github.com/3nws" target="_blank"><i class="fab fa-github mr-1"></i>GitHub</a></li>
                         </ul>
                     </div>
