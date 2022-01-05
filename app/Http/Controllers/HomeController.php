@@ -25,7 +25,7 @@ class HomeController extends Controller
     }
 
     public static function avgrate($id){
-        return Comment::where('car_id', $id)->average('rate');
+        return Comment::where('car_id', $id)->where('status', 'True')->average('rate');
     }
 
     public function index()
@@ -67,7 +67,7 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
         $data = Car::find($id);
-        $comments = Comment::where('car_id', $id)->get();
+        $comments = Comment::where('car_id', $id)->where('status', 'True')->get();
         $category = $data->category;
         $car_images = DB::select("SELECT * FROM images WHERE car_id=$id");
         return view('home.car_detail',
