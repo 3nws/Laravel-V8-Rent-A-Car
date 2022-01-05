@@ -17,7 +17,7 @@ class HomeController extends Controller
 {
 
     public static function categoryList(){
-        return Category::where('parent_id', '=', 0)->with('children')->get();
+        return Category::where('parent_id', '=', 0)->where('status', 'True')->with('children')->get();
     }
 
     public static function getSettings(){
