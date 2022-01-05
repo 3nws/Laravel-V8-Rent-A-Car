@@ -11,15 +11,41 @@
 @endsection
 
 <div class="ftco-blocks-cover-1">
-    <div class="ftco-cover-1 overlay innerpage" style="background-image: url({{ Storage::url($data->image) }});">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-lg-6 text-center">
-                    <h1>{{ $data->title }}</h1>
+
+    @if(count($car_images)>0)
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @php $cnt = 0; @endphp
+                @foreach($car_images as $rs)
+                    <div class="carousel-item @if($cnt==0) active @else  @endif">
+                        <img class="d-block w-100" src="{{ Storage::url($rs->image) }}" alt="First slide">
+                    </div>
+                    @php
+                        $cnt += 1;
+                    @endphp
+                @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    @else
+        <div class="ftco-cover-1 overlay innerpage" style="background-image: url({{ Storage::url($data->image) }});">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h1>{{ $data->title }}</h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 </div>
 
 @section('content')
@@ -97,4 +123,13 @@
     </div>
 
 
+@endsection
+
+@section('footerjs')
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        $('.carousel').carousel()
+    </script>
 @endsection
