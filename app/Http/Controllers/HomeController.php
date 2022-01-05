@@ -32,7 +32,9 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
 
-        $slider = Car::select('id', 'title', 'image', 'price', 'seats', 'large_bags', 'small_bags')->limit(3)->get();
+//        $slider = Car::select('id', 'title', 'image', 'price', 'seats', 'large_bags', 'small_bags')->limit(3)->get();
+
+        $slider = DB::select("SELECT * FROM cars WHERE status='True' LIMIT 3");
 
         $featured = DB::table('cars')->inRandomOrder()->first();
 
