@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/css/fileupload.css">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/select.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 @endsection
 
@@ -150,9 +150,10 @@
             <script src="{{ asset('assets') }}/js/fileupload.js"></script>
             <script src="{{ asset('assets') }}/js/select.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
             <script>
                 $(document).ready(function() {
-                    CKEDITOR.replace('detail');
+                    $('#detail').summernote();
                 });
             </script>
 @endsection
