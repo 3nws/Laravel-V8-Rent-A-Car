@@ -97,8 +97,8 @@ class HomeController extends Controller
 
     public function category_cars($id)
     {
-        $data = Car::where('category_id', $id)->get();
         $category = Category::find($id);
+        $data = DB::select("SELECT * FROM cars WHERE status='True' and category_id=$id");
         return view('home.category_cars', ['data' => $data, 'category' => $category]);
     }
 
