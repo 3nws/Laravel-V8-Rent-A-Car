@@ -8,9 +8,9 @@
     <ul aria-labelledby="dropdownMenu" class="dropdown-menu border-0 shadow">
         @foreach($parentCategories as $rs)
             @if(count($rs->children))
-                <li class="dropdown-submenu">
+                <li class="dropdown-submenu nav-link dropdown-toggle">
                     <a id="dropdownMenu" href="{{ route('category_cars', ['id' => $rs->id]) }}" role="button"
-                       aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+                       aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">
                         {{ $rs->title }}
                     </a>
                     <ul aria-labelledby="dropdownMenu" class="dropdown-menu border-0 shadow">

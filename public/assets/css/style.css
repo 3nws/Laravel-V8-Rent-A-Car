@@ -18,9 +18,12 @@ html {
     display: block;
 }
 
+.dropdown-submenu>a{
+    color: #212529;
+}
+
 
 .dropdown-submenu>a:after {
-    content: "\f0da";
     float: right;
     border: none;
     font-family: 'FontAwesome';
