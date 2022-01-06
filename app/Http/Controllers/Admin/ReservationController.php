@@ -20,6 +20,22 @@ class ReservationController extends Controller
     public function index()
     {
         $datalist = Reservation::all();
+        foreach ($datalist as $rs){
+            $start = Carbon::parse(Carbon::now()->toDateString());
+            $end = Carbon::parse($rs->returndate);
+            $diff = $start->diffInDays($end, false);
+//            dd($start, $end, $diff);
+            if($diff < 1){
+                if($rs->status == "Cancelled"){
+                    //
+                }elseif ($rs->status == "New"){
+                    $rs->status = "Cancelled";
+                }else{
+                    $rs->status = "Finished";
+                }
+                $rs->save();
+            }
+        }
         return view('admin.reservation', ['datalist' => $datalist]);
     }
 
