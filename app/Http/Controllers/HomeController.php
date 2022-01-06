@@ -42,7 +42,7 @@ class HomeController extends Controller
 
         $cars = DB::select("SELECT * FROM cars WHERE status='True' LIMIT 3");
 
-        $num_of_cars = Car::all()->count();
+        $num_of_cars = Car::where('status', 'True')->count();
 
         $data = [
             'setting' => $setting,
@@ -80,9 +80,9 @@ class HomeController extends Controller
     {
         $search = $request->input('search');
 
-        $count = Car::where('title', 'like', '%'.$search.'%')->get()->count();
+        $count = Car::where('title', 'like', '%'.$search.'%')->where('status', 'True')->get()->count();
         if ($count==1){
-            $data = Car::where('title', 'like', '%'.$search.'%')->first();
+            $data = Car::where('title', 'like', '%'.$search.'%')->where('status', 'True')->first();
             return redirect()->route('car_detail', ['id' => $data->id]);
         }else{
             return redirect()->route('car_list', ['search' => $search]);
@@ -90,7 +90,7 @@ class HomeController extends Controller
     }
 
     public function car_list($search){
-        $datalist = Car::where('title', 'like', '%'.$search.'%')->get();
+        $datalist = Car::where('title', 'like', '%'.$search.'%')->where('status', 'True')->get();
         $setting = Setting::first();
         return view('home.search_cars', ['search' => $search, 'datalist' => $datalist, 'setting' => $setting]);
     }

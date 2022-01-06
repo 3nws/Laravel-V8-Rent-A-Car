@@ -12,7 +12,7 @@ class Search extends Component
 
     public function render()
     {
-        $datalist = Car::where('title', 'like', '%'.$this->search.'%')->get();
+        $datalist = Car::where('title', 'like', '%'.$this->search.'%')->where('status', 'True')->get();
         return view('livewire.search', ['datalist' => $datalist, 'query' => $this->search]);
     }
 }
