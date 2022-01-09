@@ -39,7 +39,7 @@
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-7 text-center mb-5">
-                    <h2>Contact Us Or Use This Form To Rent A Car</h2>
+                    <h2>Contact Us</h2>
                 </div>
             </div>
             <div class="row">
