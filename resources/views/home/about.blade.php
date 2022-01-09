@@ -28,7 +28,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 mr-auto">
-                    <h2>Rental Car Company</h2>
                     <p>{!! $setting->aboutus !!}</p>
                 </div>
             </div>
