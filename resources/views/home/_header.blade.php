@@ -5,7 +5,7 @@
 
             <div class="col-3 ">
                 <div class="site-logo">
-                    <a href="{{ route('home') }}">CarRent</a>
+                    <a href="{{ route('home') }}">CCRentals</a>
                 </div>
             </div>
 
