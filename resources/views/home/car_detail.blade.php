@@ -18,11 +18,14 @@
             <div class="carousel-inner">
                 @php $cnt = 0; @endphp
                 @foreach($car_images as $rs)
-                    <div class="carousel-item @if($cnt==0) active @else  @endif">
+                    <div class="carousel-item ftco-cover-1 overlay innerpage @if($cnt==0) active @else  @endif">
                         <img class="d-block w-100" src="{{ Storage::url($rs->image) }}" alt="First slide">
                     </div>
                     @php
                         $cnt += 1;
+                        if ($cnt==count($car_images)){
+                            $cnt=0;
+                        }
                     @endphp
                 @endforeach
             </div>
