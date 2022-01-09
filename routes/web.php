@@ -20,6 +20,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/car/{id}', [HomeController::class, 'car'])->name('car_detail');
+Route::get('/cars', [HomeController::class, 'cars'])->name('cars');
 Route::get('/category_cars/{id}', [HomeController::class, 'category_cars'])->name('category_cars');
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
 Route::post('/get_car', [HomeController::class, 'get_car'])->name('get_car');

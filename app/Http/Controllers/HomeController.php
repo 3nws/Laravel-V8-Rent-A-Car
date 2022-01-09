@@ -40,9 +40,9 @@ class HomeController extends Controller
 
 //        $featured = DB::table('cars')->inRandomOrder()->first();
 
-        $featured = DB::select("SELECT * FROM cars WHERE status='True' ORDER BY RAND() LIMIT 1")[0];
+        $featured = DB::select("SELECT cars.*, (SELECT COUNT(*) FROM comments WHERE comments.car_id = cars.id and comments.status='True') AS CNT FROM cars ORDER BY CNT DESC LIMIT 1")[0];
 
-        $cars = DB::select("SELECT * FROM cars WHERE status='True' LIMIT 3");
+        $popular_cars = DB::select("SELECT cars.*, (SELECT COUNT(*) FROM comments WHERE comments.car_id = cars.id and comments.status='True') AS CNT FROM cars ORDER BY CNT DESC LIMIT 3");
 
         $num_of_cars = Car::where('status', 'True')->count();
 
@@ -51,7 +51,7 @@ class HomeController extends Controller
             'slider' => $slider,
             'page' => 'home',
             'featured' => $featured,
-            'cars' => $cars,
+            'cars' => $popular_cars,
             'num_of_cars' => $num_of_cars,
         ];
 
@@ -78,6 +78,13 @@ class HomeController extends Controller
             'car_images' => $car_images]);
     }
 
+    public function cars()
+    {
+        $setting = Setting::first();
+        $datalist = Car::where('status', 'True')->get();
+        return view('home.cars', ['datalist' => $datalist, 'setting' => $setting]);
+    }
+
     public function get_car(Request $request)
     {
         $search = $request->input('search');
@@ -99,9 +106,10 @@ class HomeController extends Controller
 
     public function category_cars($id)
     {
+        $setting = Setting::first();
         $category = Category::find($id);
         $data = DB::select("SELECT * FROM cars WHERE status='True' and category_id=$id");
-        return view('home.category_cars', ['data' => $data, 'category' => $category]);
+        return view('home.category_cars', ['data' => $data, 'category' => $category, 'setting' => $setting]);
     }
 
     public function contact()

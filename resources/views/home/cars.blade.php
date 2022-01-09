@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', $category->title . ' Car List')
+@section('title', ' Car List')
 
 @section('description')
     {{ $setting->description }}
@@ -11,11 +11,11 @@
 @endsection
 
 <div class="ftco-blocks-cover-1">
-    <div class="ftco-cover-1 overlay innerpage" style="background-image: url({{ Storage::url($category->image) }})">
+    <div class="ftco-cover-1 overlay innerpage" style="background-image: url('{{ asset('assets') }}/images/hero_1.jpg')">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-6 text-center">
-                    <h1>{{ strtoupper($category->title) }} CARS</h1>
+                    <h1>ALL AVAILABLE CARS</h1>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
     <div class="site-section bg-light">
         <div class="container">
             <div class="row">
-                @foreach($data as $rs)
+                @foreach($datalist as $rs)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="item-1">
                         <a href="{{ route('car_detail', ['id' => $rs->id]) }}"><img src="{{ Storage::url($rs->image) }}" style="height: 175px;" alt="Image" class="img-fluid"></a>

@@ -22,6 +22,7 @@
                         <li>
                             @include('home._category')
                         </li>
+                        <li class="@if(request()->routeIS('cars')) active @endif"><a href="{{ route('cars') }}" class="nav-link">Cars</a></li>
                         <li class="@if(request()->routeIS('aboutus')) active @endif"><a href="{{ route('aboutus') }}" class="nav-link">About Us</a></li>
                         <li class="@if(request()->routeIS('contact')) active @endif"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
                         <li class="@if(request()->routeIS('faq')) active @endif"><a href="{{ route('faq') }}" class="nav-link">FAQ</a></li>

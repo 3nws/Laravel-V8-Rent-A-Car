@@ -46,7 +46,7 @@ class Comment extends Component
             'comment' => $this->comment,
         ]);
 
-        session()->flash('message', 'Comment posted succesfully.');
+        session()->flash('message', 'Comment posted. It will be reviewed before showing up on the website!');
         $this->resetInput();
     }
 
