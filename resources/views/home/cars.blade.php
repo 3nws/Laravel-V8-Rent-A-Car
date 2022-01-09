@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', ' Car List')
+@section('title', $setting->description . ' - Car List')
 
 @section('description')
     {{ $setting->description }}

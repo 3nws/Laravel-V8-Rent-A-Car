@@ -40,9 +40,9 @@ class HomeController extends Controller
 
 //        $featured = DB::table('cars')->inRandomOrder()->first();
 
-        $featured = DB::select("SELECT cars.*, (SELECT COUNT(*) FROM comments WHERE comments.car_id = cars.id and comments.status='True') AS CNT FROM cars ORDER BY CNT DESC LIMIT 1")[0];
+        $featured = DB::select("SELECT cars.*, (SELECT COUNT(*) FROM comments WHERE comments.car_id = cars.id and comments.status='True') AS CNT FROM cars WHERE status='True' ORDER BY CNT DESC LIMIT 1")[0];
 
-        $popular_cars = DB::select("SELECT cars.*, (SELECT COUNT(*) FROM comments WHERE comments.car_id = cars.id and comments.status='True') AS CNT FROM cars ORDER BY CNT DESC LIMIT 3");
+        $popular_cars = DB::select("SELECT cars.*, (SELECT COUNT(*) FROM comments WHERE comments.car_id = cars.id and comments.status='True') AS CNT FROM cars WHERE status='True' ORDER BY CNT DESC LIMIT 3");
 
         $num_of_cars = Car::where('status', 'True')->count();
 
