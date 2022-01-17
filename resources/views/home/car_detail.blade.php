@@ -118,6 +118,9 @@
                                 @endfor
                             </p>
                         </div>
+                        <div>
+                            <a href="{{ route('make_reservation', ['car_id' => $data->id]) }}" class="btn btn-primary">Rent Now</a>
+                        </div>
                     </div>
 
                 </div>

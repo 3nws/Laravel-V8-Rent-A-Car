@@ -58,10 +58,26 @@
                                 <td>{{ $rs->days }}</td>
                                 <td>${{ ($rs->price)*($rs->days) }} (${{ $rs->price }}/day)</td>
                                 <td>{{ $rs->status }}</td>
-                                <td><a href="{{ route('user_reservation_edit', ['id' => $rs->id, 'car_id' => $rs->car->id]) }}"><i class="fas fa-edit"></i></a></td>
-                                <td><a href="{{ route('user_reservation_delete', ['id' => $rs->id]) }}"
-                                       onclick="return confirm('Are you sure you want to delete')"
-                                    ><i class="fas fa-trash-alt"></i></a></td>
+                                <td>
+                                    @if($rs->status != "Finished" and $rs->status != "Cancelled")
+                                        <a href="{{ route('user_reservation_edit', ['id' => $rs->id, 'car_id' => $rs->car->id]) }}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($rs->status != "Finished" and $rs->status != "Cancelled")
+                                        <a href="{{ route('user_reservation_delete', ['id' => $rs->id]) }}"
+                                           onclick="return confirm('Are you sure you want to delete')"
+                                        >
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    @else
+                                        -
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
