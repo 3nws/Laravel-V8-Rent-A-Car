@@ -30,8 +30,12 @@ class ReservationController extends Controller
                     //
                 }elseif ($rs->status == "New"){
                     $rs->status = "Cancelled";
+                    $rs->car->status = "True";
+                    $rs->car->save();
                 }else{
                     $rs->status = "Finished";
+                    $rs->car->status = "True";
+                    $rs->car->save();
                 }
                 $rs->save();
             }
@@ -135,6 +139,8 @@ class ReservationController extends Controller
         $data = Reservation::find($id);
         $data->status = "Cancelled";
         $data->save();
+        $data->car->status = "True";
+        $data->car->save();
 
         return redirect()->route('admin_all_reservation')->with('success','Reservation cancelled.');
     }
