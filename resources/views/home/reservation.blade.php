@@ -39,7 +39,6 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Car</th>
                             <th>Res. Date</th>
                             <th>Days</th>
@@ -52,7 +51,6 @@
                         <tbody>
                         @foreach($datalist as $rs)
                             <tr>
-                                <td>{{ $rs->id }}</td>
                                 <td><a href="{{ route('car_detail', ['id' => $rs->car->id]) }}">{{ $rs->car->title }}</a></td>
                                 <td>{{ $rs->rezdate }}</td>
                                 <td>{{ $rs->days }}</td>

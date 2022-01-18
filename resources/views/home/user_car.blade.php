@@ -41,7 +41,6 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Title</th>
                                         <th>Image</th>
                                         <th>Image Gallery</th>
@@ -58,7 +57,6 @@
                                     <tbody>
                                     @foreach($datalist as $rs)
                                         <tr>
-                                            <td>{{ $rs->id }}</td>
                                             <td><a href="{{ route('car_detail', ['id' => $rs->id]) }}">{{ $rs->title }}</a></td>
                                             <td>
                                                 @if($rs->image)
