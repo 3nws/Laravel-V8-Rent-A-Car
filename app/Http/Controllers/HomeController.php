@@ -88,6 +88,9 @@ class HomeController extends Controller
     public function get_car(Request $request)
     {
         $search = $request->input('search');
+		if (!$search){
+			$search = " ";
+		}
 
         $count = Car::where('title', 'like', '%'.$search.'%')->where('status', 'True')->get()->count();
         if ($count==1){
