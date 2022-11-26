@@ -40,7 +40,13 @@ class HomeController extends Controller
 
 //        $featured = DB::table('cars')->inRandomOrder()->first();
 
-        $featured = DB::select("SELECT cars.*, (SELECT COUNT(*) FROM comments WHERE comments.car_id = cars.id and comments.status='True') AS CNT FROM cars WHERE status='True' ORDER BY CNT DESC LIMIT 1")[0];
+        $featured = DB::select("SELECT cars.*, (SELECT COUNT(*) FROM comments WHERE comments.car_id = cars.id and comments.status='True') AS CNT FROM cars WHERE status='True' ORDER BY CNT DESC LIMIT 1");
+
+        if (sizeof($featured)==0){
+            $featured = DB::select("SELECT * FROM cars WHERE status='True' LIMIT 1")[0];
+        }else {
+            $featured = $featured[0];
+        }
 
         $popular_cars = DB::select("SELECT cars.*, (SELECT COUNT(*) FROM comments WHERE comments.car_id = cars.id and comments.status='True') AS CNT FROM cars WHERE status='True' ORDER BY CNT DESC LIMIT 3");
 
