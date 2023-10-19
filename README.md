@@ -16,10 +16,8 @@ git clone https://github.com/3nws/Laravel-V8-Rent-A-Car.git
 
 ```bash
 composer install
-php artisan cache:clear
 copy .env.example .env
 php artisan key:generate
-php artisan route:clear
 php artisan migrate
 php artisan db:seed
 php artisan serve
